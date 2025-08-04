@@ -1,13 +1,9 @@
 import React from "react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Select, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export const MainContentSection = (): JSX.Element => {
-  // Product data for mapping
   const products = [
     {
       id: 1,
@@ -51,92 +47,78 @@ export const MainContentSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="w-full bg-[#fcf4c6] py-12">
+    <section className="relative w-full bg-[#fbd68f] py-8 md:py-16 px-4 md:px-8">
       <div className="container mx-auto">
-        <div className="flex flex-col items-center mb-12">
-          <h1 className="font-normal text-[35px] text-[#843503] [font-family:'Alata',Helvetica] mb-8">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="font-['Alata',Helvetica] font-normal text-[#843503] text-2xl md:text-3xl lg:text-[35px] mb-6">
             Product List
-          </h1>
-
-          <Tabs defaultValue="best-seller" className="w-full max-w-[463px]">
-            <TabsList className="w-full bg-transparent justify-between p-0 h-auto">
-              <TabsTrigger
-                value="best-seller"
-                className="relative data-[state=active]:bg-transparent data-[state=active]:shadow-none px-0"
-              >
-                <div className="[font-family:'Poppins',Helvetica] font-medium text-[#7e4a1d] text-2xl">
-                  Best Seller
-                </div>
-                <Separator className="absolute bottom-0 w-[123px] h-0.5 bg-[#7e4a1d]" />
-              </TabsTrigger>
-              <TabsTrigger
-                value="new-arrival"
-                className="data-[state=active]:bg-transparent data-[state=active]:shadow-none px-0"
-              >
-                <div className="[font-family:'Poppins',Helvetica] font-medium text-black text-2xl">
-                  New Arrival
-                </div>
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
+          </h2>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-8">
+            <button className="font-['Poppins',Helvetica] font-semibold text-[#843503] text-base md:text-lg border-b-2 border-[#843503] pb-1">
+              Best Seller
+            </button>
+            <button className="font-['Poppins',Helvetica] font-normal text-[#843503] text-base md:text-lg hover:font-semibold transition-all">
+              New Arrival
+            </button>
+          </div>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-[33px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {products.map((product) => (
-            <Card
-              key={product.id}
-              className="w-[287px] h-[426px] rounded-[10px] overflow-hidden relative"
-            >
-              <CardContent className="p-0">
-                <div className="relative">
-                  <img
-                    className="w-full h-[229px] object-cover"
-                    alt={product.name}
-                    src={product.image}
-                  />
-
+            <Card key={product.id} className="bg-white rounded-[15px] md:rounded-[20px] shadow-sm hover:shadow-md transition-shadow">
+              <CardContent className="p-4 md:p-6">
+                <div className="relative mb-4">
                   {product.isNew && (
-                    <Badge className="absolute top-1.5 left-[9px] w-[72px] h-9 bg-[#7e4a1d] rounded [font-family:'Poppins',Helvetica] font-medium text-white text-[27px] flex items-center justify-center">
+                    <span className="absolute top-2 left-2 bg-[#843503] text-white text-xs font-medium px-2 py-1 rounded">
                       New
-                    </Badge>
+                    </span>
                   )}
-
-                  <Separator className="absolute bottom-[51px] left-1/2 transform -translate-x-1/2 w-[180px] h-0.5" />
+                  {product.discount && (
+                    <span className="absolute top-2 right-2 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded">
+                      {product.discount}
+                    </span>
+                  )}
+                  <div className="w-full h-[150px] md:h-[180px] mb-4">
+                    <img
+                      className="w-full h-full object-cover rounded-lg"
+                      alt={product.name}
+                      src={product.image}
+                    />
+                  </div>
+                  <div className="w-full h-px bg-gray-200 mb-4"></div>
                 </div>
 
-                <div className="px-[9px] pt-[228px]">
-                  <div className="flex justify-between items-start">
-                    <h3 className="[font-family:'Poppins',Helvetica] font-medium text-black text-[26px]">
-                      {product.name}
-                    </h3>
-                    {product.discount && (
-                      <span className="[font-family:'Poppins',Helvetica] font-medium text-[#3f730a] text-sm">
-                        ({product.discount})
-                      </span>
-                    )}
-                  </div>
+                <div className="space-y-3">
+                  <h3 className="font-['Poppins',Helvetica] font-medium text-black text-base md:text-lg">
+                    {product.name}
+                  </h3>
 
-                  <div className="flex items-center gap-2 mt-2">
-                    <span className="[font-family:'Poppins',Helvetica] font-medium text-[#ff0000] text-2xl">
+                  <div className="flex items-center gap-2">
+                    <span className="font-['Poppins',Helvetica] font-bold text-[#843503] text-lg md:text-xl">
                       ₹ {product.price}/-
                     </span>
-                    <span className="[font-family:'Poppins',Helvetica] font-medium text-[#adadad] text-sm line-through">
+                    <span className="font-['Poppins',Helvetica] font-normal text-gray-500 text-sm line-through">
                       ₹ {product.originalPrice}/-
                     </span>
                   </div>
 
-                  <p className="[font-family:'Poppins',Helvetica] font-medium text-[#adadad] text-xs mt-4">
+                  <p className="font-['Poppins',Helvetica] font-normal text-gray-600 text-xs md:text-sm leading-relaxed">
                     {product.description}
                   </p>
 
-                  <div className="flex items-center gap-[53px] mt-6">
+                  <div className="flex items-center gap-3 mt-4">
                     <Select defaultValue="1">
-                      <SelectTrigger className="w-[63px] h-10 pl-4 pr-2 border-[#8e95a2] [font-family:'Roboto',Helvetica] font-normal text-[#383a42] text-lg">
+                      <SelectTrigger className="w-16 h-8 md:h-10 border-gray-300 text-sm">
                         <SelectValue placeholder="1" />
                       </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                        <SelectItem value="3">3</SelectItem>
+                      </SelectContent>
                     </Select>
 
-                    <Button className="bg-[#7e4a1d] text-[#ebf6ff] rounded-lg px-4 py-2.5 h-auto [font-family:'Poppins',Helvetica] font-normal text-lg">
+                    <Button className="flex-1 bg-[#843503] hover:bg-[#6a3d18] text-white rounded-lg h-8 md:h-10 text-xs md:text-sm font-['Poppins',Helvetica] font-normal">
                       ADD TO CART
                     </Button>
                   </div>

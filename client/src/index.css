@@ -84,8 +84,18 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    padding-top: 0;
+  }
+
+  /* Ensure fixed navbar doesn't interfere with anchor links */
+  section {
+    scroll-margin-top: 80px;
   }
 }

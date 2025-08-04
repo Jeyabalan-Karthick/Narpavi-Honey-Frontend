@@ -1,5 +1,6 @@
+
 import React from "react";
-import { Header } from "../components/Header";
+import { Navbar } from "../components/Navbar";
 import { HeroBanner } from "../components/HeroBanner";
 import { FAQSection } from "./sections/FAQSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
@@ -11,29 +12,34 @@ import { CallToActionSection } from "./sections/CallToActionSection";
 import { FeaturedProductsSection } from "./sections/FeaturedProductsSection";
 import { AboutUsSection } from "./sections/AboutUsSection";
 import { WhyChooseUsSection } from "./sections/WhyChooseUsSection";
+import { VideoTourSection } from "./sections/VideoTourSection";
 
 export const NarpavaiHoney = (): JSX.Element => {
   return (
     <div className="bg-white flex flex-row justify-center w-full">
       <div className="bg-white w-full max-w-[1440px] relative">
-        {/* Header */}
-        <Header />
+        {/* Fixed Navbar */}
+        <Navbar />
 
-        {/* Hero Banner */}
-        <HeroBanner />
+        {/* Main content with top padding to account for fixed navbar */}
+        <div className="pt-16 md:pt-20">
+          {/* Hero Banner */}
+          <HeroBanner />
 
-        {/* Main content sections */}
-        <div className="flex flex-col w-full">
-          <ProductCategoriesSection />
-          <HeroSection />
-          <MainContentSection />
-          <FeaturedProductsSection />
-          <WhyChooseUsSection />
-          <AboutUsSection />
-          <TestimonialsSection />
-          <FAQSection />
-          <CallToActionSection />
-          <NewsletterSubscriptionSection />
+          {/* Main content sections */}
+          <div className="flex flex-col w-full">
+            <ProductCategoriesSection />
+            <HeroSection />
+            <MainContentSection />
+            <FeaturedProductsSection />
+            <WhyChooseUsSection />
+            <AboutUsSection />
+            <TestimonialsSection />
+            <VideoTourSection />
+            <FAQSection />
+            <CallToActionSection />
+            <NewsletterSubscriptionSection />
+          </div>
         </div>
       </div>
     </div>
