@@ -1,16 +1,16 @@
-
 import React from "react";
 import { Header } from "../components/Header";
 import { HeroBanner } from "../components/HeroBanner";
-import { NarpavaiPromiseSection } from "./sections/NarpavaiPromiseSection";
+import { FAQSection } from "./sections/FAQSection";
+import { TestimonialsSection } from "./sections/TestimonialsSection";
 import { ProductCategoriesSection } from "./sections/ProductCategoriesSection";
 import { HeroSection } from "./sections/HeroSection";
-import { GetOfferSection } from "./sections/GetOfferSection";
+import { NewsletterSubscriptionSection } from "./sections/NewsletterSubscriptionSection";
 import { MainContentSection } from "./sections/MainContentSection";
+import { CallToActionSection } from "./sections/CallToActionSection";
+import { FeaturedProductsSection } from "./sections/FeaturedProductsSection";
+import { AboutUsSection } from "./sections/AboutUsSection";
 import { WhyChooseUsSection } from "./sections/WhyChooseUsSection";
-import { VideoTourSection } from "./sections/VideoTourSection";
-import { FAQSection } from "./sections/FAQSection";
-import { FooterSection } from "./sections/FooterSection";
 
 export const NarpavaiHoney = (): JSX.Element => {
   return (
@@ -24,15 +24,16 @@ export const NarpavaiHoney = (): JSX.Element => {
 
         {/* Main content sections */}
         <div className="flex flex-col w-full">
-          <NarpavaiPromiseSection />
           <ProductCategoriesSection />
           <HeroSection />
-          <GetOfferSection />
           <MainContentSection />
+          <FeaturedProductsSection />
           <WhyChooseUsSection />
-          <VideoTourSection />
+          <AboutUsSection />
+          <TestimonialsSection />
           <FAQSection />
-          <FooterSection />
+          <CallToActionSection />
+          <NewsletterSubscriptionSection />
         </div>
       </div>
     </div>
