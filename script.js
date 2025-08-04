@@ -1,199 +1,363 @@
+// Mobile menu functionality
+let isMobileMenuOpen = false;
 
-// Mobile menu toggle
 function toggleMobileMenu() {
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuButton = document.querySelector('.mobile-menu-button');
+    isMobileMenuOpen = !isMobileMenuOpen;
+    const mobileNav = document.getElementById('mobile-nav');
+    const menuIcon = document.getElementById('mobile-menu-icon');
     
-    mobileMenu.classList.toggle('active');
-    menuButton.classList.toggle('active');
+    if (isMobileMenuOpen) {
+        mobileNav.classList.add('active');
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+    } else {
+        mobileNav.classList.remove('active');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+    }
 }
 
-// FAQ toggle functionality
+function closeMobileMenu() {
+    isMobileMenuOpen = false;
+    const mobileNav = document.getElementById('mobile-nav');
+    const menuIcon = document.getElementById('mobile-menu-icon');
+    
+    mobileNav.classList.remove('active');
+    menuIcon.classList.remove('fa-times');
+    menuIcon.classList.add('fa-bars');
+}
+
+// FAQ functionality
 function toggleFAQ(index) {
-    const content = document.getElementById(`faq-content-${index}`);
-    const item = content.parentElement;
-    const icon = item.querySelector('.faq-icon');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const targetItem = faqItems[index];
     
     // Close all other FAQ items
-    const allItems = document.querySelectorAll('.faq-item');
-    const allContents = document.querySelectorAll('.faq-content-item');
-    const allIcons = document.querySelectorAll('.faq-icon');
-    
-    allItems.forEach((item, i) => {
+    faqItems.forEach((item, i) => {
         if (i !== index) {
             item.classList.remove('active');
-            allContents[i].classList.remove('active');
         }
     });
     
-    // Toggle current item
-    item.classList.toggle('active');
-    content.classList.toggle('active');
+    // Toggle the clicked item
+    targetItem.classList.toggle('active');
 }
 
-// Newsletter form submission
-document.addEventListener('DOMContentLoaded', function() {
-    const newsletterForm = document.querySelector('.newsletter-form');
-    
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('.newsletter-input').value;
-            
-            if (email) {
-                alert('Thank you for subscribing to our newsletter!');
-                this.querySelector('.newsletter-input').value = '';
-            }
-        });
+// Video tour functionality
+let currentCenterVideo = 0;
+const videos = [
+    {
+        id: 0,
+        title: "Main Honey Farm Tour",
+        image: "/figmaAssets/group-1000005074.png",
+    },
+    {
+        id: 1,
+        title: "Beekeeping Process",
+        image: "/figmaAssets/untitled-design--58--3.png",
+    },
+    {
+        id: 2,
+        title: "Honey Extraction",
+        image: "/figmaAssets/untitled-design--59--1.png",
     }
+];
+
+function setCenterVideo(videoId) {
+    currentCenterVideo = videoId;
+    const centerVideoImg = document.getElementById('center-video-img');
+    if (centerVideoImg) {
+        centerVideoImg.src = videos[videoId].image;
+        centerVideoImg.alt = videos[videoId].title;
+    }
+}
+
+// Gallery auto-scroll functionality
+function initGalleryScroll() {
+    const galleryScroll = document.getElementById('gallery-scroll');
+    if (!galleryScroll) return;
     
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('.navbar-link, .mobile-link');
+    // Clone images for seamless loop
+    const galleryItems = galleryScroll.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        galleryScroll.appendChild(clone);
+    });
+}
+
+// Product tabs functionality
+function initProductTabs() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Here you could add logic to filter products based on the selected tab
+            // For now, we'll just handle the visual state
+        });
+    });
+}
+
+// Smooth scrolling for navigation links
+function initSmoothScrolling() {
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
                 
                 // Close mobile menu if open
-                const mobileMenu = document.getElementById('mobileMenu');
-                mobileMenu.classList.remove('active');
+                if (isMobileMenuOpen) {
+                    closeMobileMenu();
+                }
             }
         });
     });
+}
+
+// Navbar scroll effect
+function initNavbarScroll() {
+    const navbar = document.getElementById('navbar');
+    let lastScrollTop = 0;
     
-    // Search functionality
-    const searchButton = document.querySelector('.search-button');
-    const searchInput = document.querySelector('.search-input');
-    
-    if (searchButton && searchInput) {
-        searchButton.addEventListener('click', function() {
-            const searchTerm = searchInput.value.trim();
-            if (searchTerm) {
-                alert(`Searching for: ${searchTerm}`);
-                // Here you would implement actual search functionality
-            }
-        });
-        
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchButton.click();
-            }
-        });
-    }
-    
-    // Add scroll effect to navbar
     window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.backdropFilter = 'blur(10px)';
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down
+            navbar.style.transform = 'translateY(-100%)';
         } else {
-            navbar.style.background = 'white';
-            navbar.style.backdropFilter = 'none';
+            // Scrolling up
+            navbar.style.transform = 'translateY(0)';
         }
+        
+        lastScrollTop = scrollTop;
     });
+}
+
+// Add to cart functionality
+function initAddToCartButtons() {
+    const addToCartButtons = document.querySelectorAll('.add-cart-btn, .product-btn');
     
-    // Cart and wishlist functionality (placeholder)
-    const cartButton = document.querySelector('.navbar-icons .icon-button:first-child');
-    const wishlistButton = document.querySelector('.navbar-icons .icon-button:nth-child(2)');
-    
-    if (cartButton) {
-        cartButton.addEventListener('click', function() {
-            alert('Cart functionality coming soon!');
-        });
-    }
-    
-    if (wishlistButton) {
-        wishlistButton.addEventListener('click', function() {
-            alert('Wishlist functionality coming soon!');
-        });
-    }
-    
-    // Category card buttons
-    const categoryButtons = document.querySelectorAll('.card-button');
-    categoryButtons.forEach(button => {
+    addToCartButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const cardTitle = this.closest('.category-card').querySelector('.card-title').textContent;
-            alert(`Viewing ${cardTitle} collection!`);
+            // Add visual feedback
+            const originalText = this.textContent;
+            this.textContent = 'Added!';
+            this.style.backgroundColor = '#28a745';
+            
+            setTimeout(() => {
+                this.textContent = originalText;
+                this.style.backgroundColor = '';
+            }, 2000);
+            
+            // Update cart count (simplified)
+            updateCartCount();
         });
     });
+}
+
+// Update cart count
+function updateCartCount() {
+    const cartCounts = document.querySelectorAll('.nav-icon-count');
+    cartCounts.forEach(count => {
+        const currentCount = parseInt(count.textContent) || 0;
+        count.textContent = currentCount + 1;
+    });
+}
+
+// Intersection Observer for animations
+function initScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.category-card, .product-item, .feature-card, .promise-card');
     
-    // Hero shop now button
-    const heroButton = document.querySelector('.hero-button');
-    if (heroButton) {
-        heroButton.addEventListener('click', function() {
-            // Scroll to product categories section
-            const categoriesSection = document.querySelector('.product-categories');
-            if (categoriesSection) {
-                categoriesSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    }
-    
-    // Add animation on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('fade-in');
             }
         });
-    }, observerOptions);
-    
-    // Observe elements for animation
-    const animateElements = document.querySelectorAll('.category-card, .testimonial-card, .faq-item');
-    animateElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     });
+    
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Search functionality
+function initSearch() {
+    const searchInput = document.querySelector('.search-input');
+    
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.trim();
+                if (searchTerm) {
+                    // Simple search implementation - scroll to products section
+                    const productsSection = document.getElementById('products');
+                    if (productsSection) {
+                        productsSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    
+                    // Clear search input
+                    this.value = '';
+                }
+            }
+        });
+    }
+}
+
+// Initialize all functionality when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all interactive features
+    initGalleryScroll();
+    initProductTabs();
+    initSmoothScrolling();
+    initNavbarScroll();
+    initAddToCartButtons();
+    initScrollAnimations();
+    initSearch();
+    
+    // Set initial FAQ state
+    const firstFaqItem = document.querySelector('.faq-item');
+    if (firstFaqItem) {
+        firstFaqItem.classList.add('active');
+    }
+    
+    // Initialize video tour
+    setCenterVideo(0);
+    
+    console.log('Narpavai Honey website initialized successfully!');
 });
 
-// Close mobile menu when clicking outside
-document.addEventListener('click', function(e) {
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuButton = document.querySelector('.mobile-menu-button');
-    
-    if (mobileMenu && mobileMenu.classList.contains('active')) {
-        if (!mobileMenu.contains(e.target) && !menuButton.contains(e.target)) {
-            mobileMenu.classList.remove('active');
-            menuButton.classList.remove('active');
-        }
+// Handle window resize for responsive adjustments
+window.addEventListener('resize', function() {
+    // Close mobile menu on resize to larger screen
+    if (window.innerWidth >= 1024 && isMobileMenuOpen) {
+        closeMobileMenu();
     }
 });
 
-// Lazy loading for images
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver(function(entries) {
+// Form validation for newsletter (if added later)
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+// Product quantity selector functionality
+function initQuantitySelectors() {
+    const quantitySelects = document.querySelectorAll('.quantity-select');
+    
+    quantitySelects.forEach(select => {
+        select.addEventListener('change', function() {
+            const quantity = parseInt(this.value);
+            const productCard = this.closest('.product-item');
+            
+            if (productCard) {
+                // Update any quantity-dependent elements
+                const addButton = productCard.querySelector('.add-cart-btn');
+                if (addButton && quantity > 1) {
+                    const originalText = addButton.getAttribute('data-original-text') || addButton.textContent;
+                    addButton.setAttribute('data-original-text', originalText);
+                    addButton.textContent = `ADD ${quantity} TO CART`;
+                } else if (addButton) {
+                    const originalText = addButton.getAttribute('data-original-text');
+                    if (originalText) {
+                        addButton.textContent = originalText;
+                    }
+                }
+            }
+        });
+    });
+}
+
+// Initialize quantity selectors when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    initQuantitySelectors();
+});
+
+// Accessibility improvements
+document.addEventListener('DOMContentLoaded', function() {
+    // Add keyboard navigation for interactive elements
+    const interactiveElements = document.querySelectorAll('button, a, [tabindex]');
+    
+    interactiveElements.forEach(element => {
+        element.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                if (this.tagName === 'BUTTON') {
+                    e.preventDefault();
+                    this.click();
+                }
+            }
+        });
+    });
+    
+    // Add aria-labels for screen readers
+    const searchInput = document.querySelector('.search-input');
+    if (searchInput) {
+        searchInput.setAttribute('aria-label', 'Search products');
+    }
+    
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    if (mobileMenuBtn) {
+        mobileMenuBtn.setAttribute('aria-label', 'Toggle mobile menu');
+    }
+});
+
+// Performance optimization: Lazy loading for images
+function initLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                imageObserver.unobserve(img);
             }
         });
     });
     
-    const lazyImages = document.querySelectorAll('img[data-src]');
-    lazyImages.forEach(img => imageObserver.observe(img));
+    images.forEach(img => imageObserver.observe(img));
 }
+
+// Error handling for missing images
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('img');
+    
+    images.forEach(img => {
+        img.addEventListener('error', function() {
+            // Replace with placeholder or hide the image
+            this.style.display = 'none';
+            console.warn(`Failed to load image: ${this.src}`);
+        });
+    });
+});
+
+// Export functions for potential external use
+window.NarpavaiHoney = {
+    toggleMobileMenu,
+    closeMobileMenu,
+    toggleFAQ,
+    setCenterVideo,
+    validateEmail
+};
