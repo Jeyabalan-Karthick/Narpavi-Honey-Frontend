@@ -4,99 +4,83 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const HeroSection = (): JSX.Element => {
-  // Product data for mapping
   const products = [
     {
       id: 1,
       name: "Murungai Honey",
       price: "Rs. 300/-",
       image: "/figmaAssets/untitled-design--58--3.png",
-      linePosition: { top: "219px", left: "37px" },
+      action: "Add to cart",
     },
     {
       id: 2,
       name: "Malai Thaen",
       price: "Rs. 670/-",
       image: "/figmaAssets/untitled-design--59--1.png",
-      linePosition: { top: "242px", left: "79px" },
+      action: "Add to cart",
     },
   ];
 
   return (
-    <section className="relative w-full bg-[#fbd68f] py-11 px-[86px]">
-      <h2 className="font-['Alata',Helvetica] font-normal text-[#843503] text-[35px] mb-10">
-        Product List
-      </h2>
+    <section className="relative w-full bg-[#fbd68f] py-6 md:py-8 lg:py-12">
+      <div className="container mx-auto px-4">
+        <h2 className="font-['Alata',Helvetica] font-normal text-[#843503] text-xl md:text-2xl lg:text-3xl mb-6 md:mb-8 lg:mb-10">
+          Product List
+        </h2>
 
-      <div className="flex gap-6">
-        {/* Promotional Banner */}
-        <Card className="w-[542px] h-[528px] bg-[url(/figmaAssets/rectangle-3463901.png)] bg-cover bg-[50%_50%] border-none rounded-[30px]">
-          <CardContent className="p-0">
-            <div className="relative w-full h-full pt-[87px] px-[27px]">
-              <div className="flex flex-col items-center">
-                <h3 className="font-['Poppins',Helvetica] font-bold text-white text-[35px] text-center mb-[62px]">
+        <div className="flex flex-col lg:flex-row gap-4 md:gap-6">
+          {/* Promotional Banner */}
+          <Card className="w-full lg:w-1/2 h-64 md:h-80 lg:h-96 bg-[url(/figmaAssets/rectangle-3463901.png)] bg-cover bg-center border-none rounded-2xl md:rounded-3xl">
+            <CardContent className="p-0">
+              <div className="relative w-full h-full flex flex-col justify-center items-center text-center p-4 md:p-6 lg:p-8">
+                <h3 className="font-['Poppins',Helvetica] font-bold text-white text-xl md:text-2xl lg:text-3xl mb-4 md:mb-6 lg:mb-8">
                   Deal end soon
                 </h3>
-
-                <p className="text-white text-2xl leading-[34px] font-['Poppins',Helvetica] font-normal mb-[69px]">
-                  Experience the pure essence of honey with Narpavai — raw,
-                  unprocessed, and ethically harvested.
+                <p className="font-['Poppins',Helvetica] text-white text-xs md:text-sm lg:text-base mb-4 md:mb-6 lg:mb-8 max-w-xs">
+                  Experience the pure essence of honey with Narpavai — raw, unprocessed, and ethically harvested.
                 </p>
-
-                <Button className="w-[268px] h-[89px] bg-[#dda12f] rounded-[20px] text-white text-[35px] font-['Poppins',Helvetica] font-medium hover:bg-[#c9860c] relative before:content-[''] before:absolute before:inset-0 before:p-0.5 before:rounded-[20px] before:[background:linear-gradient(96deg,rgba(201,134,12,1)_0%,rgba(99,66,6,1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1]">
+                <Button className="bg-[#f5dc6f] hover:bg-[#f0d147] text-[#843503] px-4 md:px-6 lg:px-8 py-2 md:py-3 rounded-lg font-['Poppins',Helvetica] font-medium text-sm md:text-base">
                   LEARN MORE
                 </Button>
               </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
 
-        {/* Navigation arrow left */}
-        <div className="flex items-center">
-          <ChevronLeftIcon className="w-6 h-12 text-[#843503]" />
-        </div>
-
-        {/* Product Cards */}
-        {products.map((product) => (
-          <div key={product.id} className="relative">
-            <Card className="w-[313px] h-[528px] bg-white rounded-[30px]">
-              <CardContent className="flex flex-col items-center pt-[34px]">
-                <div className="relative w-[222px] h-[222px]">
-                  <div className="absolute w-[126px] h-7 bottom-[30px] left-1/2 -translate-x-1/2 bg-[#5e5e5e] rounded-[63px/14px] blur-lg" />
-                  <img
-                    className="w-full h-full object-cover"
-                    alt={product.name}
-                    src={product.image}
-                  />
-                </div>
-
-                <img
-                  className="w-[156px] h-px object-cover my-2"
-                  alt="Line"
-                  src="/figmaAssets/line-61.svg"
-                />
-
-                <div className="mt-2 w-full px-4">
-                  <h3 className="font-['Poppins',Helvetica] font-light text-black text-[28px]">
+          {/* Product Cards */}
+          <div className="w-full lg:w-1/2 flex gap-4">
+            {products.map((product) => (
+              <Card key={product.id} className="flex-1 bg-white rounded-2xl shadow-lg">
+                <CardContent className="p-4 md:p-6 text-center">
+                  <div className="mb-4 md:mb-6">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-24 md:h-32 lg:h-40 object-contain mx-auto"
+                    />
+                  </div>
+                  <h4 className="font-['Poppins',Helvetica] font-semibold text-[#843503] text-sm md:text-base lg:text-lg mb-2">
                     {product.name}
-                  </h3>
-                  <p className="font-['Poppins',Helvetica] font-semibold text-black text-[28px] text-center mt-[34px]">
+                  </h4>
+                  <p className="font-['Poppins',Helvetica] font-bold text-[#843503] text-sm md:text-base lg:text-lg mb-4">
                     {product.price}
                   </p>
-                  <div className="mt-[30px] flex justify-center">
-                    <Button className="w-[185px] h-[52px] rounded-[20px] bg-transparent text-[#843503] text-2xl font-['Poppins',Helvetica] font-medium relative before:content-[''] before:absolute before:inset-0 before:p-0.5 before:rounded-[20px] before:[background:linear-gradient(97deg,rgba(126,74,29,1)_0%,rgba(126,74,29,1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] hover:bg-[#f8f8f8]">
-                      Add to cart
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                  <Button className="w-full bg-[#843503] hover:bg-[#6a3d18] text-white text-xs md:text-sm py-2 rounded-lg">
+                    {product.action}
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        ))}
+        </div>
 
-        {/* Navigation arrow right */}
-        <div className="flex items-center">
-          <ChevronRightIcon className="w-6 h-12 text-[#843503]" />
+        {/* Navigation arrows */}
+        <div className="flex justify-center mt-4 md:mt-6 space-x-4">
+          <button className="p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow">
+            <ChevronLeftIcon className="w-5 h-5 md:w-6 md:h-6 text-[#843503]" />
+          </button>
+          <button className="p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow">
+            <ChevronRightIcon className="w-5 h-5 md:w-6 md:h-6 text-[#843503]" />
+          </button>
         </div>
       </div>
     </section>

@@ -1,144 +1,94 @@
-import { SearchIcon } from "lucide-react";
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export const FAQSection = (): JSX.Element => {
-  // Navigation menu items
-  const navItems = [
-    { label: "Home", href: "#" },
-    { label: "About us", href: "#" },
-    { label: "Products", href: "#" },
-    { label: "Blog", href: "#" },
-    { label: "Contact", href: "#" },
+  const faqItems = [
+    {
+      question: "Is Narpavai Honey 100% pure and natural?",
+      answer: "Yes, our honey is 100% pure and natural. We ensure that our honey goes through no artificial processing or preservatives. We source our honey directly from trusted beekeepers who follow ethical and sustainable practices.",
+    },
+    {
+      question: "How do I store honey properly?",
+      answer: "Store honey in a cool, dry place at room temperature. Keep the container tightly sealed to prevent moisture absorption. Avoid refrigerating honey as it may crystallize faster.",
+    },
+    {
+      question: "Is your honey safe for kids and elders?",
+      answer: "Our honey is safe for most people, including children over 1 year old and elders. However, honey should not be given to infants under 12 months due to the risk of botulism.",
+    },
+    {
+      question: "Does honey expire or crystallize over time?",
+      answer: "Honey has an indefinite shelf life when stored properly. Crystallization is a natural process and doesn't indicate spoilage. You can gently warm crystallized honey to return it to liquid form.",
+    },
   ];
 
   return (
-    <section className="relative w-full">
-      {/* Background image */}
-      <img
-        className="absolute w-full h-full top-0 left-0 z-0"
-        alt="Background design"
-        src="/figmaAssets/untitled-design--12--1.svg"
-      />
+    <section className="relative w-full bg-gradient-to-b from-[#fbd68f] to-[#f5dc6f] py-8 md:py-12 lg:py-16 overflow-hidden">
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Bee decoration */}
+        <img
+          className="absolute top-4 right-4 md:top-8 md:right-8 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-cover z-20"
+          alt="Bee"
+          src="/figmaAssets/bee-3.png"
+        />
 
-      {/* Navigation bar */}
-      <header className="relative w-full bg-white z-10">
-        <div className="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
-          {/* Logo */}
-          <img
-            className="w-24 h-24 object-cover"
-            alt="Narpavai Honey Logo"
-            src="/figmaAssets/add-a-little-bit-of-body-text--9--1-1.png"
-          />
+        <h2 className="font-['Alata',Helvetica] text-[#843503] text-xl md:text-2xl lg:text-3xl mb-6 md:mb-8 lg:mb-12 text-center md:text-left">
+          Frequently Asked Questions
+        </h2>
 
-          {/* Navigation */}
-          <div className="flex items-end gap-16">
-            <NavigationMenu>
-              <NavigationMenuList className="flex gap-6">
-                {navItems.map((item, index) => (
-                  <NavigationMenuItem key={index}>
-                    <NavigationMenuLink
-                      className="px-0 py-2.5 [font-family:'Poppins',Helvetica] font-semibold text-[#7e4a1d] text-base"
-                      href={item.href}
-                    >
-                      {item.label}
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
-
-            {/* SearchIcon and icons */}
-            <div className="flex items-end gap-[26px]">
-              <div className="relative w-[292px] h-[46px]">
-                <div className="relative w-[294px] h-[46px]">
-                  <div className="absolute w-[292px] h-[35px] top-1.5 left-0.5">
-                    <div className="relative w-[290px] h-[35px] bg-[#f9e482] rounded-[10px]">
-                      <Input
-                        className="absolute top-0 left-0 h-[35px] w-full bg-transparent border-none pl-12 [font-family:'Poppins',Helvetica] font-medium text-[#7e4a1d] text-base"
-                        placeholder="Search"
-                      />
-                    </div>
-                  </div>
-                  <div className="absolute w-[46px] h-[46px] top-0 left-0 flex items-center justify-center">
-                    <SearchIcon className="w-6 h-6 text-[#7e4a1d]" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Notification icons */}
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-[46px] overflow-hidden">
-                  <div className="inline-flex items-center gap-[5px] p-[15px] relative rounded-[37px] overflow-hidden">
-                    <img
-                      className="relative w-[26px] h-[26px]"
-                      alt="Notification icon"
-                      src="/figmaAssets/icn-settings-icn-xs-1.svg"
-                    />
-                    <span className="relative w-fit [font-family:'Poppins',Helvetica] font-normal text-black text-[22px] text-center tracking-[0.20px] leading-4 whitespace-nowrap">
-                      1
-                    </span>
-                  </div>
-                </div>
-
-                <div className="w-14 h-[46px] overflow-hidden">
-                  <div className="inline-flex items-center gap-[5px] p-[15px] relative rounded-[37px] overflow-hidden">
-                    <img
-                      className="relative w-[26px] h-[26px]"
-                      alt="Cart icon"
-                      src="/figmaAssets/icn-settings-icn-xs.svg"
-                    />
-                    <span className="relative w-fit [font-family:'Poppins',Helvetica] font-normal text-black text-[22px] text-center tracking-[0.20px] leading-4 whitespace-nowrap">
-                      1
-                    </span>
-                  </div>
-                </div>
-
-                <img
-                  className="relative w-10 h-10"
-                  alt="User profile"
-                  src="/figmaAssets/group-1000005080.png"
-                />
-              </div>
+        <div className="flex flex-col lg:flex-row items-start gap-6 md:gap-8 lg:gap-12">
+          {/* Left side with bee and honeycomb image */}
+          <div className="w-full lg:w-5/12 flex justify-center lg:justify-start">
+            <div className="relative">
+              <img
+                className="w-64 md:w-80 lg:w-96 h-auto object-cover"
+                alt="Bee on honeycomb"
+                src="/figmaAssets/clip-path-group.png"
+              />
             </div>
           </div>
+
+          {/* Right side with FAQ accordion */}
+          <div className="w-full lg:w-7/12">
+            <Accordion type="single" collapsible defaultValue="item-0">
+              {faqItems.map((item, index) => (
+                <AccordionItem
+                  key={`faq-${index}`}
+                  value={`item-${index}`}
+                  className="mb-4 md:mb-6 rounded-lg bg-white shadow-lg"
+                >
+                  <AccordionTrigger className="px-4 md:px-6 lg:px-8 py-4 md:py-5 lg:py-6 text-left font-['Poppins',Helvetica] font-semibold text-[#7e4a1d] text-sm md:text-base lg:text-lg leading-tight hover:no-underline">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 md:px-6 lg:px-8 pb-4 md:pb-5 lg:pb-6 font-['Poppins',Helvetica] font-normal text-[#7e4a1d] text-xs md:text-sm lg:text-base leading-relaxed">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </div>
-      </header>
 
-      {/* Hero content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 pt-36 pb-16">
-        <Card className="border-none shadow-none bg-transparent">
-          <CardContent className="p-0">
-            <h1 className="[font-family:'Alata',Helvetica] font-normal text-[#a1510c] text-6xl leading-normal mb-12">
-              Welcome to Narpavai Honey <br />
-              Taste the Purity of Nature
-            </h1>
-
-            <p className="[font-family:'Poppins',Helvetica] font-normal text-[#595959] text-2xl text-justify leading-[34px] max-w-[683px] mb-12">
-              Experience the pure essence of honey with Narpavai — raw,
-              unprocessed, and ethically harvested.
-              <br />
-              Packed with natural flavor and nutrients, every drop delivers
-              health, trust, and tradition.
-            </p>
-
-            <Button
-              variant="outline"
-              className="h-12 [font-family:'Alata',Helvetica] font-normal text-black text-xl border-[#843503] rounded-[5px]"
-            >
-              LEARN MORE
-            </Button>
-          </CardContent>
-        </Card>
+        {/* Award images at bottom */}
+        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mt-8 md:mt-12 lg:mt-16">
+          <img className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-cover rounded-lg" alt="Award 1" src="/figmaAssets/1101-1.png" />
+          <img className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-cover rounded-lg" alt="Award 2" src="/figmaAssets/1101-1.png" />
+          <img className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-cover rounded-lg" alt="Award 3" src="/figmaAssets/1101-1.png" />
+          <img className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-cover rounded-lg" alt="Award 4" src="/figmaAssets/1101-1.png" />
+          <img className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-cover rounded-lg" alt="Award 5" src="/figmaAssets/1101-1.png" />
+        </div>
       </div>
+
+      {/* Background image */}
+      <img
+        className="absolute top-0 left-0 -z-10 w-full h-full opacity-20"
+        alt="Background design"
+        src="/figmaAssets/untitled-design--12--1-2.svg"
+      />
     </section>
   );
 };

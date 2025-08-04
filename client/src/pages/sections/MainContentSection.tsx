@@ -1,19 +1,15 @@
 import React from "react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Select, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 
 export const MainContentSection = (): JSX.Element => {
-  // Product data for mapping
   const products = [
     {
       id: 1,
       name: "Pure honey",
-      price: "350",
-      originalPrice: "550",
+      price: "₹ 350/-",
+      originalPrice: "₹ 550/-",
       discount: "70% off",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       image: "/figmaAssets/untitled-design--58--3-1.png",
@@ -22,8 +18,8 @@ export const MainContentSection = (): JSX.Element => {
     {
       id: 2,
       name: "Multi Flower Honey",
-      price: "650",
-      originalPrice: "2500",
+      price: "₹ 650/-",
+      originalPrice: "₹ 2500/-",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       image: "/figmaAssets/untitled-design--58--3-2.png",
       isNew: false,
@@ -31,8 +27,8 @@ export const MainContentSection = (): JSX.Element => {
     {
       id: 3,
       name: "Malai Thaen",
-      price: "950",
-      originalPrice: "1850",
+      price: "₹ 950/-",
+      originalPrice: "₹ 1850/-",
       discount: "70% off",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       image: "/figmaAssets/untitled-design--58--3-3.png",
@@ -41,8 +37,8 @@ export const MainContentSection = (): JSX.Element => {
     {
       id: 4,
       name: "Pure honey",
-      price: "350",
-      originalPrice: "550",
+      price: "₹ 350/-",
+      originalPrice: "₹ 550/-",
       discount: "70% off",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       image: "/figmaAssets/untitled-design--58--3-4.png",
@@ -51,95 +47,74 @@ export const MainContentSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="w-full bg-[#fcf4c6] py-12">
-      <div className="container mx-auto">
-        <div className="flex flex-col items-center mb-12">
-          <h1 className="font-normal text-[35px] text-[#843503] [font-family:'Alata',Helvetica] mb-8">
+    <section className="w-full bg-gradient-to-b from-[#f5dc6f] to-[#fbd68f] py-8 md:py-12 lg:py-16">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-6 md:mb-8 lg:mb-12">
+          <h2 className="font-['Alata',Helvetica] text-[#843503] text-xl md:text-2xl lg:text-3xl mb-4 md:mb-6">
             Product List
-          </h1>
+          </h2>
 
-          <Tabs defaultValue="best-seller" className="w-full max-w-[463px]">
-            <TabsList className="w-full bg-transparent justify-between p-0 h-auto">
-              <TabsTrigger
-                value="best-seller"
-                className="relative data-[state=active]:bg-transparent data-[state=active]:shadow-none px-0"
-              >
-                <div className="[font-family:'Poppins',Helvetica] font-medium text-[#7e4a1d] text-2xl">
-                  Best Seller
-                </div>
-                <Separator className="absolute bottom-0 w-[123px] h-0.5 bg-[#7e4a1d]" />
-              </TabsTrigger>
-              <TabsTrigger
-                value="new-arrival"
-                className="data-[state=active]:bg-transparent data-[state=active]:shadow-none px-0"
-              >
-                <div className="[font-family:'Poppins',Helvetica] font-medium text-black text-2xl">
-                  New Arrival
-                </div>
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
+          <div className="flex justify-center space-x-8 md:space-x-12">
+            <button className="font-['Poppins',Helvetica] font-semibold text-[#843503] text-sm md:text-base pb-2 border-b-2 border-[#843503]">
+              Best Seller
+            </button>
+            <button className="font-['Poppins',Helvetica] text-[#666] text-sm md:text-base pb-2 hover:text-[#843503] transition-colors">
+              New Arrival
+            </button>
+          </div>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-[33px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {products.map((product) => (
-            <Card
-              key={product.id}
-              className="w-[287px] h-[426px] rounded-[10px] overflow-hidden relative"
-            >
-              <CardContent className="p-0">
-                <div className="relative">
+            <Card key={product.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow relative overflow-hidden">
+              {product.isNew && (
+                <Badge className="absolute top-3 left-3 bg-[#843503] text-white z-10 text-xs">
+                  New
+                </Badge>
+              )}
+
+              <CardContent className="p-4 md:p-6">
+                <div className="mb-4 md:mb-6">
                   <img
-                    className="w-full h-[229px] object-cover"
-                    alt={product.name}
                     src={product.image}
+                    alt={product.name}
+                    className="w-full h-32 md:h-40 object-contain mx-auto"
                   />
-
-                  {product.isNew && (
-                    <Badge className="absolute top-1.5 left-[9px] w-[72px] h-9 bg-[#7e4a1d] rounded [font-family:'Poppins',Helvetica] font-medium text-white text-[27px] flex items-center justify-center">
-                      New
-                    </Badge>
-                  )}
-
-                  <Separator className="absolute bottom-[51px] left-1/2 transform -translate-x-1/2 w-[180px] h-0.5" />
                 </div>
 
-                <div className="px-[9px] pt-[228px]">
-                  <div className="flex justify-between items-start">
-                    <h3 className="[font-family:'Poppins',Helvetica] font-medium text-black text-[26px]">
-                      {product.name}
-                    </h3>
-                    {product.discount && (
-                      <span className="[font-family:'Poppins',Helvetica] font-medium text-[#3f730a] text-sm">
-                        ({product.discount})
-                      </span>
-                    )}
-                  </div>
+                <h3 className="font-['Poppins',Helvetica] font-semibold text-[#843503] text-sm md:text-base mb-2">
+                  {product.name}
+                </h3>
 
-                  <div className="flex items-center gap-2 mt-2">
-                    <span className="[font-family:'Poppins',Helvetica] font-medium text-[#ff0000] text-2xl">
-                      ₹ {product.price}/-
-                    </span>
-                    <span className="[font-family:'Poppins',Helvetica] font-medium text-[#adadad] text-sm line-through">
-                      ₹ {product.originalPrice}/-
-                    </span>
-                  </div>
+                <div className="flex items-center space-x-2 mb-2">
+                  <span className="font-['Poppins',Helvetica] font-bold text-[#e74c3c] text-sm md:text-base">
+                    {product.price}
+                  </span>
+                  <span className="font-['Poppins',Helvetica] text-[#999] line-through text-xs md:text-sm">
+                    {product.originalPrice}
+                  </span>
+                </div>
 
-                  <p className="[font-family:'Poppins',Helvetica] font-medium text-[#adadad] text-xs mt-4">
-                    {product.description}
+                {product.discount && (
+                  <p className="font-['Poppins',Helvetica] text-[#27ae60] text-xs md:text-sm mb-3">
+                    {product.discount}
                   </p>
+                )}
 
-                  <div className="flex items-center gap-[53px] mt-6">
-                    <Select defaultValue="1">
-                      <SelectTrigger className="w-[63px] h-10 pl-4 pr-2 border-[#8e95a2] [font-family:'Roboto',Helvetica] font-normal text-[#383a42] text-lg">
-                        <SelectValue placeholder="1" />
-                      </SelectTrigger>
-                    </Select>
-
-                    <Button className="bg-[#7e4a1d] text-[#ebf6ff] rounded-lg px-4 py-2.5 h-auto [font-family:'Poppins',Helvetica] font-normal text-lg">
-                      ADD TO CART
-                    </Button>
+                <div className="flex items-center justify-between mt-4">
+                  <div className="flex items-center space-x-2">
+                    <button className="w-6 h-6 md:w-8 md:h-8 rounded border border-[#ddd] flex items-center justify-center text-sm">
+                      -
+                    </button>
+                    <span className="font-['Poppins',Helvetica] text-sm md:text-base">1</span>
+                    <button className="w-6 h-6 md:w-8 md:h-8 rounded border border-[#ddd] flex items-center justify-center text-sm">
+                      +
+                    </button>
                   </div>
+
+                  <Button className="bg-[#843503] hover:bg-[#6a3d18] text-white text-xs md:text-sm px-3 md:px-4 py-1 md:py-2 rounded">
+                    ADD TO CART
+                  </Button>
                 </div>
               </CardContent>
             </Card>
