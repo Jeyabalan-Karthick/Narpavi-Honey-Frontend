@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,7 +7,7 @@ export const ProductCategoriesSection = (): JSX.Element => {
   const categoryCards = [
     {
       id: 1,
-      title: "Pure Honey",
+      title: "Purasdasde Honey",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       imagePath: "/figmaAssets/add-a-little-bit-of-body-text--6--1.png",
@@ -57,7 +56,9 @@ export const ProductCategoriesSection = (): JSX.Element => {
             <Card
               key={card.id}
               className={`w-full max-w-[331px] rounded-[20px] overflow-hidden bg-white shadow-lg transition-transform hover:scale-105 ${
-                card.highlighted ? "border-2 border-[#7e4a1d] ring-2 ring-[#7e4a1d] ring-opacity-20" : "border border-gray-200"
+                card.highlighted
+                  ? "border-2 border-[#7e4a1d] ring-2 ring-[#7e4a1d] ring-opacity-20"
+                  : "border border-gray-200"
               }`}
             >
               <CardContent className="p-6 lg:p-8">
