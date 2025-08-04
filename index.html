@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narpavai Honey - Taste the Purity of Nature</title>
+    <meta name="description" content="Experience the pure essence of honey with Narpavai — raw, unprocessed, and ethically harvested. Shop our premium honey products with free shipping.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Alata:wght@400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fixed Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <img class="navbar-logo" alt="Narpavai Honey Logo" src="client/public/figmaAssets/add-a-little-bit-of-body-text--9--1-1.png">
+            
+            <!-- Desktop Navigation -->
+            <div class="navbar-desktop">
+                <div class="navbar-links">
+                    <a href="#home" class="navbar-link">Home</a>
+                    <a href="#about" class="navbar-link">About us</a>
+                    <a href="#products" class="navbar-link">Products</a>
+                    <a href="#blog" class="navbar-link">Blog</a>
+                    <a href="#contact" class="navbar-link">Contact</a>
+                </div>
+                
+                <!-- Search and icons -->
+                <div class="navbar-actions">
+                    <!-- Search bar -->
+                    <div class="search-container">
+                        <input type="text" placeholder="Search" class="search-input">
+                        <button class="search-button">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Cart and user icons -->
+                    <div class="navbar-icons">
+                        <button class="icon-button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4m2.6 8L6 6H2m5 7v6a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-6m0 0V8a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v5"></path>
+                            </svg>
+                            <span class="badge">1</span>
+                        </button>
+                        <button class="icon-button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                            <span class="badge">1</span>
+                        </button>
+                        <button class="icon-button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-button" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Mobile menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#home" class="mobile-link">Home</a>
+                <a href="#about" class="mobile-link">About us</a>
+                <a href="#products" class="mobile-link">Products</a>
+                <a href="#blog" class="mobile-link">Blog</a>
+                <a href="#contact" class="mobile-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Banner -->
+        <section class="hero-banner">
+            <div class="hero-background">
+                <img src="client/public/figmaAssets/untitled-design--52--1.png" alt="Honey jars and bee" class="hero-bg-image">
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Welcome to Narpavai Honey<br>
+                    Taste the Purity of Nature
+                </h1>
+                <p class="hero-description">
+                    Experience the pure essence of honey with Narpavai — raw, unprocessed, and ethically harvested. 
+                    Packed with natural flavor and nutrients, every drop delivers health, trust, and tradition.
+                </p>
+                <button class="hero-button">Shop Now</button>
+            </div>
+        </section>
+
+        <!-- Product Categories Section -->
+        <section class="product-categories">
+            <img class="bee-decoration" alt="Bee" src="client/public/figmaAssets/bee-3.png">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Shop By Category</h2>
+                    <p class="section-subtitle">Ethically Sourced from Trusted Beekeepers</p>
+                </div>
+                <div class="category-cards">
+                    <div class="category-card">
+                        <div class="card-image" style="background-image: url('client/public/figmaAssets/add-a-little-bit-of-body-text--6--1.png');"></div>
+                        <h3 class="card-title">Purasdasde Honey</h3>
+                        <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <button class="card-button">View Collection</button>
+                    </div>
+                    <div class="category-card highlighted">
+                        <div class="card-image" style="background-image: url('client/public/figmaAssets/add-a-little-bit-of-body-text--6--1-1.png');"></div>
+                        <h3 class="card-title">Value Added Product</h3>
+                        <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <button class="card-button">View Collection</button>
+                    </div>
+                    <div class="category-card">
+                        <div class="card-image" style="background-image: url('client/public/figmaAssets/add-a-little-bit-of-body-text--6--1-2.png');"></div>
+                        <h3 class="card-title">Pure Honey</h3>
+                        <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <button class="card-button">View Collection</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Our Customers Say Section -->
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <div class="testimonial-cards">
+                    <div class="testimonial-card">
+                        <div class="customer-avatar" style="background-image: url('client/public/figmaAssets/frame-39.svg');"></div>
+                        <p class="testimonial-text">
+                            Discover what our valued customers are saying about their experience with Narpavai Honey—pure, flavorful, and trusted by families nationwide.
+                        </p>
+                        <div class="rating">
+                            <img src="client/public/figmaAssets/frame-531686.svg" alt="Five star rating">
+                        </div>
+                        <p class="customer-name">Sarah Johnson</p>
+                        <p class="customer-location">California, USA</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="customer-avatar" style="background-image: url('client/public/figmaAssets/frame-39-1.svg');"></div>
+                        <p class="testimonial-text">
+                            The quality of Narpavai honey is exceptional. You can taste the difference - it's pure, natural, and delicious. Our family has been using it for months now.
+                        </p>
+                        <div class="rating">
+                            <img src="client/public/figmaAssets/frame-531686.svg" alt="Five star rating">
+                        </div>
+                        <p class="customer-name">Michael Chen</p>
+                        <p class="customer-location">New York, USA</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq">
+            <div class="container">
+                <div class="faq-content">
+                    <div class="faq-images">
+                        <img class="faq-main-image" alt="Honey jar illustration" src="client/public/figmaAssets/group-1000005074.png">
+                        <img class="faq-decoration-1" alt="Decorative element" src="client/public/figmaAssets/untitled-design--58--3-5.png">
+                        <img class="faq-decoration-2" alt="Decorative element" src="client/public/figmaAssets/untitled-design--58--4.png">
+                    </div>
+                    <div class="faq-questions">
+                        <div class="faq-item">
+                            <button class="faq-trigger" onclick="toggleFAQ(0)">
+                                Is Narpavai Honey 100% pure and natural?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-content-item" id="faq-content-0">
+                                Yes, Narpavai Honey is 100% pure, unprocessed, and free from any additives or preservatives. We source our honey directly from trusted beekeepers to ensure natural goodness in every drop.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-trigger" onclick="toggleFAQ(1)">
+                                How do I store honey properly?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-content-item" id="faq-content-1">
+                                Store honey in a cool, dry place away from direct sunlight. Keep the container tightly sealed to prevent moisture absorption. Honey has a long shelf life and doesn't spoil when stored properly.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-trigger" onclick="toggleFAQ(2)">
+                                What makes Narpavai honey different?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-content-item" id="faq-content-2">
+                                Our honey is raw, unprocessed, and ethically sourced directly from trusted beekeepers. We maintain the natural enzymes and nutrients that make honey beneficial for your health.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <div class="container">
+                <h2 class="newsletter-title">Stay Updated with Narpavai</h2>
+                <p class="newsletter-description">Subscribe to our newsletter for the latest updates on our honey products and special offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="client/public/figmaAssets/add-a-little-bit-of-body-text--9--1-1.png" alt="Narpavai Logo" class="footer-logo-img">
+                    <p class="footer-description">
+                        Experience the pure essence of honey with Narpavai — raw, unprocessed, and ethically harvested.<br>
+                        Packed with natural flavor and nutrients, every drop delivers health, trust, and tradition.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <a href="#home">Home</a>
+                        <a href="#about">About Us</a>
+                        <a href="#products">Products</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Products</h4>
+                        <a href="#pure-honey">Pure Honey</a>
+                        <a href="#value-added">Value Added Products</a>
+                        <a href="#organic">Organic Range</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact Info</h4>
+                        <p>Email: info@narpaваihoney.com</p>
+                        <p>Phone: +1 (555) 123-4567</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Narpavai Honey. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
