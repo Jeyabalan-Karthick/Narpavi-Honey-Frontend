@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -32,56 +33,57 @@ export const ProductCategoriesSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative w-full overflow-hidden">
-      <div className="w-full bg-[#ffefd2] py-16">
-        <img
-          className="absolute w-[178px] h-[172px] top-[16px] right-[200px] object-cover"
-          alt="Bee"
-          src="/figmaAssets/bee-3.png"
-        />
+    <section className="relative w-full bg-gradient-to-b from-[#ffefd2] to-[#fbd690] py-16 overflow-hidden">
+      {/* Bee decoration */}
+      <img
+        className="absolute w-24 h-20 lg:w-[178px] lg:h-[172px] top-4 right-4 lg:top-[16px] lg:right-[200px] object-cover z-10"
+        alt="Bee"
+        src="/figmaAssets/bee-3.png"
+      />
 
-        <div className="container mx-auto px-4">
-          <h2 className="font-['Alata',Helvetica] text-[35px] text-[#843503] mb-4">
+      <div className="container mx-auto px-4 relative z-20">
+        <div className="text-center lg:text-left mb-12">
+          <h2 className="font-['Alata',Helvetica] text-[#843503] text-3xl lg:text-[35px] mb-4">
             Shop By Category
           </h2>
 
-          <p className="font-['Poppins',Helvetica] font-light text-2xl mb-12">
+          <p className="font-['Poppins',Helvetica] font-light text-xl lg:text-2xl text-[#595959]">
             Ethically Sourced from Trusted Beekeepers
           </p>
+        </div>
 
-          <div className="flex flex-wrap justify-center gap-8 md:gap-[105px]">
-            {categoryCards.map((card) => (
-              <Card
-                key={card.id}
-                className={`w-[331px] rounded-[10px] overflow-hidden ${
-                  card.highlighted ? "border-2 border-[#7e4a1d]" : ""
-                }`}
-              >
-                <CardContent className="p-8">
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-8">
+          {categoryCards.map((card) => (
+            <Card
+              key={card.id}
+              className={`w-full max-w-[331px] rounded-[20px] overflow-hidden bg-white shadow-lg transition-transform hover:scale-105 ${
+                card.highlighted ? "border-2 border-[#7e4a1d] ring-2 ring-[#7e4a1d] ring-opacity-20" : "border border-gray-200"
+              }`}
+            >
+              <CardContent className="p-6 lg:p-8">
+                <div className="relative mb-6">
                   <div
-                    className="w-[266px] h-[158px] mb-4 bg-cover bg-center"
+                    className="w-full h-[200px] lg:h-[158px] rounded-[15px] bg-cover bg-center shadow-inner"
                     style={{ backgroundImage: `url(${card.imagePath})` }}
                   />
+                </div>
 
-                  <h3 className="font-['Poppins',Helvetica] font-medium text-xl text-black mb-2">
-                    {card.title}
-                  </h3>
+                <h3 className="font-['Poppins',Helvetica] font-semibold text-xl lg:text-xl text-[#843503] mb-3 text-center">
+                  {card.title}
+                </h3>
 
-                  <p className="font-['Poppins',Helvetica] font-medium text-xs text-[#adadad] mb-6">
-                    {card.description}
-                  </p>
+                <p className="font-['Poppins',Helvetica] font-normal text-sm text-[#6b7280] mb-6 text-center leading-relaxed">
+                  {card.description}
+                </p>
 
-                  <Button className="w-full h-12 bg-[#7e4a1d] rounded-[5px] text-white text-2xl font-['Poppins',Helvetica] font-medium hover:bg-[#6a3d18] relative before:content-[''] before:absolute before:inset-0 before:p-0.5 before:rounded-[5px] before:[background:linear-gradient(97deg,rgba(126,74,29,1)_0%,rgba(126,74,29,1)_100%)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
-                    View Collection
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                <Button className="w-full h-12 bg-[#7e4a1d] rounded-[10px] text-white text-lg font-['Poppins',Helvetica] font-medium hover:bg-[#6a3d18] transition-all duration-300 shadow-lg hover:shadow-xl">
+                  View Collection
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
-
-      <div className="absolute w-full h-[416px] bottom-0 bg-[#fbd690]" />
     </section>
   );
 };
