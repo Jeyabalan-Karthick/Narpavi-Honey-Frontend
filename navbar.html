@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Navbar specific styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 0.75rem 0;
+        }
+
+        .navbar-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-img {
+            width: 3.5rem;
+            height: 3.5rem;
+            object-fit: cover;
+        }
+
+        .navbar-nav {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .navbar-nav {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+        }
+
+        .nav-link {
+            color: #843503;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .nav-link:hover {
+            color: #6a3d18;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 12rem;
+            background-color: #f5dc6f;
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 2.5rem 0.5rem 1rem;
+            color: #843503;
+            font-size: 0.875rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .search-input::placeholder {
+            color: #843503;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #843503;
+        }
+
+        .nav-icon-container {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            cursor: pointer;
+        }
+
+        .nav-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #843503;
+        }
+
+        .nav-icon-count {
+            color: #843503;
+            font-weight: 500;
+            font-size: 0.875rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            margin-left: 0.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        .mobile-nav {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav-link {
+            color: #843503;
+            font-weight: 500;
+            font-size: 0.875rem;
+            text-decoration: none;
+            padding: 0.25rem 0.5rem;
+            transition: color 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .mobile-nav-link:hover {
+            color: #6a3d18;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="navbar-content">
+                <!-- Logo -->
+                <div class="navbar-logo">
+                    <img src="client/public/figmaAssets/add-a-little-bit-of-body-text--9--1-1.png" alt="Narpavai Logo" class="logo-img">
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="navbar-nav">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About us</a>
+                    <a href="#products" class="nav-link">Products</a>
+                    <a href="#blog" class="nav-link">Blog</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+
+                <!-- Search and Icons -->
+                <div class="navbar-actions">
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <input type="text" placeholder="Search" class="search-input">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+
+                    <!-- Cart Icon -->
+                    <div class="nav-icon-container">
+                        <i class="fas fa-shopping-cart nav-icon"></i>
+                        <span class="nav-icon-count">1</span>
+                    </div>
+
+                    <!-- Heart Icon -->
+                    <div class="nav-icon-container">
+                        <i class="fas fa-heart nav-icon"></i>
+                        <span class="nav-icon-count">1</span>
+                    </div>
+
+                    <!-- User Icon -->
+                    <i class="fas fa-user nav-icon"></i>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars" id="mobile-menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="mobile-nav" id="mobile-nav">
+                <a href="#home" class="mobile-nav-link" onclick="closeMobileMenu()">Home</a>
+                <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()">About us</a>
+                <a href="#products" class="mobile-nav-link" onclick="closeMobileMenu()">Products</a>
+                <a href="#blog" class="mobile-nav-link" onclick="closeMobileMenu()">Blog</a>
+                <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            const menuIcon = document.getElementById('mobile-menu-icon');
+            
+            mobileNav.classList.toggle('active');
+            
+            if (mobileNav.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            const menuIcon = document.getElementById('mobile-menu-icon');
+            
+            mobileNav.classList.remove('active');
+            menuIcon.classList.remove('fa-times');
+            menuIcon.classList.add('fa-bars');
+        }
+    </script>
+</body>
+</html>

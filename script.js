@@ -5,7 +5,7 @@ function toggleMobileMenu() {
     isMobileMenuOpen = !isMobileMenuOpen;
     const mobileNav = document.getElementById('mobile-nav');
     const menuIcon = document.getElementById('mobile-menu-icon');
-    
+
     if (isMobileMenuOpen) {
         mobileNav.classList.add('active');
         menuIcon.classList.remove('fa-bars');
@@ -21,7 +21,7 @@ function closeMobileMenu() {
     isMobileMenuOpen = false;
     const mobileNav = document.getElementById('mobile-nav');
     const menuIcon = document.getElementById('mobile-menu-icon');
-    
+
     mobileNav.classList.remove('active');
     menuIcon.classList.remove('fa-times');
     menuIcon.classList.add('fa-bars');
@@ -31,14 +31,14 @@ function closeMobileMenu() {
 function toggleFAQ(index) {
     const faqItems = document.querySelectorAll('.faq-item');
     const targetItem = faqItems[index];
-    
+
     // Close all other FAQ items
     faqItems.forEach((item, i) => {
         if (i !== index) {
             item.classList.remove('active');
         }
     });
-    
+
     // Toggle the clicked item
     targetItem.classList.toggle('active');
 }
@@ -63,6 +63,67 @@ const videos = [
     }
 ];
 
+// Set center video in video tour
+function setCenterVideo(videoIndex) {
+    const videos = [
+        '/figmaAssets/group-1000005074.png',
+        '/figmaAssets/untitled-design--58--3.png',
+        '/figmaAssets/untitled-design--59--1.png'
+    ];
+
+    const centerImg = document.getElementById('center-video-img');
+    if (centerImg && videos[videoIndex]) {
+        centerImg.src = videos[videoIndex];
+    }
+}
+
+// Navbar functionality
+function toggleMobileMenu() {
+    const mobileNav = document.getElementById('mobile-nav');
+    const menuIcon = document.getElementById('mobile-menu-icon');
+
+    if (mobileNav && menuIcon) {
+        mobileNav.classList.toggle('active');
+
+        if (mobileNav.classList.contains('active')) {
+            menuIcon.classList.remove('fa-bars');
+            menuIcon.classList.add('fa-times');
+        } else {
+            menuIcon.classList.remove('fa-times');
+            menuIcon.classList.add('fa-bars');
+        }
+    }
+}
+
+function closeMobileMenu() {
+    const mobileNav = document.getElementById('mobile-nav');
+    const menuIcon = document.getElementById('mobile-menu-icon');
+
+    if (mobileNav && menuIcon) {
+        mobileNav.classList.remove('active');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+    }
+}
+
+// Smooth scrolling for navigation links
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const navbarHeight = document.querySelector('.navbar') ? document.querySelector('.navbar').offsetHeight : 80;
+                window.scrollTo({
+                    top: target.offsetTop - navbarHeight,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+
 function setCenterVideo(videoId) {
     currentCenterVideo = videoId;
     const centerVideoImg = document.getElementById('center-video-img');
@@ -76,7 +137,7 @@ function setCenterVideo(videoId) {
 function initGalleryScroll() {
     const galleryScroll = document.getElementById('gallery-scroll');
     if (!galleryScroll) return;
-    
+
     // Clone images for seamless loop
     const galleryItems = galleryScroll.querySelectorAll('.gallery-item');
     galleryItems.forEach(item => {
@@ -88,15 +149,15 @@ function initGalleryScroll() {
 // Product tabs functionality
 function initProductTabs() {
     const tabButtons = document.querySelectorAll('.tab-btn');
-    
+
     tabButtons.forEach(button => {
         button.addEventListener('click', function() {
             // Remove active class from all buttons
             tabButtons.forEach(btn => btn.classList.remove('active'));
-            
+
             // Add active class to clicked button
             this.classList.add('active');
-            
+
             // Here you could add logic to filter products based on the selected tab
             // For now, we'll just handle the visual state
         });
@@ -106,22 +167,22 @@ function initProductTabs() {
 // Smooth scrolling for navigation links
 function initSmoothScrolling() {
     const navLinks = document.querySelectorAll('a[href^="#"]');
-    
+
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            
+
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-            
+
             if (targetElement) {
                 const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
-                
+
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
                 });
-                
+
                 // Close mobile menu if open
                 if (isMobileMenuOpen) {
                     closeMobileMenu();
@@ -135,10 +196,10 @@ function initSmoothScrolling() {
 function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
     let lastScrollTop = 0;
-    
+
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
+
         if (scrollTop > lastScrollTop && scrollTop > 100) {
             // Scrolling down
             navbar.style.transform = 'translateY(-100%)';
@@ -146,7 +207,7 @@ function initNavbarScroll() {
             // Scrolling up
             navbar.style.transform = 'translateY(0)';
         }
-        
+
         lastScrollTop = scrollTop;
     });
 }
@@ -154,19 +215,19 @@ function initNavbarScroll() {
 // Add to cart functionality
 function initAddToCartButtons() {
     const addToCartButtons = document.querySelectorAll('.add-cart-btn, .product-btn');
-    
+
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function() {
             // Add visual feedback
             const originalText = this.textContent;
             this.textContent = 'Added!';
             this.style.backgroundColor = '#28a745';
-            
+
             setTimeout(() => {
                 this.textContent = originalText;
                 this.style.backgroundColor = '';
             }, 2000);
-            
+
             // Update cart count (simplified)
             updateCartCount();
         });
@@ -185,7 +246,7 @@ function updateCartCount() {
 // Intersection Observer for animations
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll('.category-card, .product-item, .feature-card, .promise-card');
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -196,7 +257,7 @@ function initScrollAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
-    
+
     animatedElements.forEach(element => {
         observer.observe(element);
     });
@@ -205,7 +266,7 @@ function initScrollAnimations() {
 // Search functionality
 function initSearch() {
     const searchInput = document.querySelector('.search-input');
-    
+
     if (searchInput) {
         searchInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
@@ -216,7 +277,7 @@ function initSearch() {
                     if (productsSection) {
                         productsSection.scrollIntoView({ behavior: 'smooth' });
                     }
-                    
+
                     // Clear search input
                     this.value = '';
                 }
@@ -235,16 +296,16 @@ document.addEventListener('DOMContentLoaded', function() {
     initAddToCartButtons();
     initScrollAnimations();
     initSearch();
-    
+
     // Set initial FAQ state
     const firstFaqItem = document.querySelector('.faq-item');
     if (firstFaqItem) {
         firstFaqItem.classList.add('active');
     }
-    
+
     // Initialize video tour
     setCenterVideo(0);
-    
+
     console.log('Narpavai Honey website initialized successfully!');
 });
 
@@ -265,12 +326,12 @@ function validateEmail(email) {
 // Product quantity selector functionality
 function initQuantitySelectors() {
     const quantitySelects = document.querySelectorAll('.quantity-select');
-    
+
     quantitySelects.forEach(select => {
         select.addEventListener('change', function() {
             const quantity = parseInt(this.value);
             const productCard = this.closest('.product-item');
-            
+
             if (productCard) {
                 // Update any quantity-dependent elements
                 const addButton = productCard.querySelector('.add-cart-btn');
@@ -298,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     // Add keyboard navigation for interactive elements
     const interactiveElements = document.querySelectorAll('button, a, [tabindex]');
-    
+
     interactiveElements.forEach(element => {
         element.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -309,13 +370,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Add aria-labels for screen readers
     const searchInput = document.querySelector('.search-input');
     if (searchInput) {
         searchInput.setAttribute('aria-label', 'Search products');
     }
-    
+
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     if (mobileMenuBtn) {
         mobileMenuBtn.setAttribute('aria-label', 'Toggle mobile menu');
@@ -325,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Performance optimization: Lazy loading for images
 function initLazyLoading() {
     const images = document.querySelectorAll('img[data-src]');
-    
+
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -336,14 +397,14 @@ function initLazyLoading() {
             }
         });
     });
-    
+
     images.forEach(img => imageObserver.observe(img));
 }
 
 // Error handling for missing images
 document.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll('img');
-    
+
     images.forEach(img => {
         img.addEventListener('error', function() {
             // Replace with placeholder or hide the image
@@ -351,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.warn(`Failed to load image: ${this.src}`);
         });
     });
-});
+}
 
 // Export functions for potential external use
 window.NarpavaiHoney = {

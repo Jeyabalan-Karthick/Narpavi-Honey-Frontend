@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,64 +26,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Fixed Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="navbar-container">
-            <div class="navbar-content">
-                <!-- Logo -->
-                <div class="navbar-logo">
-                    <img src="client/public/figmaAssets/add-a-little-bit-of-body-text--9--1-1.png" alt="Narpavai Logo" class="logo-img">
-                </div>
-
-                <!-- Desktop Navigation -->
-                <div class="navbar-nav">
-                    <a href="#home" class="nav-link">Home</a>
-                    <a href="#about" class="nav-link">About us</a>
-                    <a href="#products" class="nav-link">Products</a>
-                    <a href="#blog" class="nav-link">Blog</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
-
-                <!-- Search and Icons -->
-                <div class="navbar-actions">
-                    <!-- Search Bar -->
-                    <div class="search-container">
-                        <input type="text" placeholder="Search" class="search-input" data-testid="input-search">
-                        <i class="fas fa-search search-icon"></i>
-                    </div>
-
-                    <!-- Cart Icon -->
-                    <div class="nav-icon-container" data-testid="link-cart">
-                        <i class="fas fa-shopping-cart nav-icon"></i>
-                        <span class="nav-icon-count">1</span>
-                    </div>
-
-                    <!-- Heart Icon -->
-                    <div class="nav-icon-container" data-testid="link-wishlist">
-                        <i class="fas fa-heart nav-icon"></i>
-                        <span class="nav-icon-count">1</span>
-                    </div>
-
-                    <!-- User Icon -->
-                    <i class="fas fa-user nav-icon" data-testid="link-profile"></i>
-
-                    <!-- Mobile Menu Button -->
-                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" data-testid="button-mobile-menu">
-                        <i class="fas fa-bars" id="mobile-menu-icon"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Navigation Menu -->
-            <div class="mobile-nav" id="mobile-nav">
-                <a href="#home" class="mobile-nav-link" onclick="closeMobileMenu()">Home</a>
-                <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()">About us</a>
-                <a href="#products" class="mobile-nav-link" onclick="closeMobileMenu()">Products</a>
-                <a href="#blog" class="mobile-nav-link" onclick="closeMobileMenu()">Blog</a>
-                <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Include Fixed Navbar -->
+    <div id="navbar-container"></div>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -139,54 +84,53 @@
             </div>
         </section>
 
-        <!-- Hero Product Section -->
-        <section class="hero-product">
+        <!-- Enhanced Product List Section -->
+        <section class="enhanced-product-list">
             <div class="container">
                 <h2 class="section-title">Product List</h2>
-                <div class="hero-product-content">
-                    <!-- Promotional Banner -->
-                    <div class="promo-banner">
-                        <div class="promo-content">
-                            <h3 class="promo-title">Deal end soon</h3>
-                            <p class="promo-description">
+                <div class="product-showcase">
+                    <!-- Deal Card -->
+                    <div class="deal-card">
+                        <div class="deal-content">
+                            <h3 class="deal-title">Deal end soon</h3>
+                            <p class="deal-description">
                                 Experience the pure essence of honey with Narpavai — raw, unprocessed, and ethically harvested.
                             </p>
-                            <button class="promo-btn" data-testid="button-deal-learn-more">LEARN MORE</button>
+                            <button class="deal-btn">LEARN MORE</button>
                         </div>
                     </div>
 
                     <!-- Product Navigation -->
-                    <div class="product-nav">
-                        <button class="nav-arrow" data-testid="button-nav-left">
+                    <div class="product-navigation">
+                        <button class="nav-arrow nav-left">
                             <i class="fas fa-chevron-left"></i>
                         </button>
-                        <div class="product-cards">
-                            <div class="product-card" data-testid="card-product-1">
-                                <div class="product-image-container">
-                                    <div class="product-shadow"></div>
-                                    <img src="client/public/figmaAssets/untitled-design--58--3.png" alt="Murungai Honey" class="product-image">
+                        
+                        <div class="product-cards-container">
+                            <div class="product-card-enhanced">
+                                <div class="product-image-wrapper">
+                                    <img src="client/public/figmaAssets/untitled-design--58--3.png" alt="Murungai Honey" class="product-image-enhanced">
                                 </div>
-                                <img src="client/public/figmaAssets/line-61.svg" alt="Line" class="product-line">
-                                <div class="product-info">
-                                    <h3 class="product-name">Murungai Honey</h3>
-                                    <p class="product-price">Rs. 300/-</p>
-                                    <button class="product-btn" data-testid="button-add-cart-1">Add to cart</button>
+                                <div class="product-info-enhanced">
+                                    <h3 class="product-name-enhanced">Murungai Honey</h3>
+                                    <p class="product-price-enhanced">Rs. 300/-</p>
+                                    <button class="add-to-cart-btn">Add to cart</button>
                                 </div>
                             </div>
-                            <div class="product-card" data-testid="card-product-2">
-                                <div class="product-image-container">
-                                    <div class="product-shadow"></div>
-                                    <img src="client/public/figmaAssets/untitled-design--59--1.png" alt="Malai Thaen" class="product-image">
+                            
+                            <div class="product-card-enhanced">
+                                <div class="product-image-wrapper">
+                                    <img src="client/public/figmaAssets/untitled-design--59--1.png" alt="Malai Thaen" class="product-image-enhanced">
                                 </div>
-                                <img src="client/public/figmaAssets/line-61.svg" alt="Line" class="product-line">
-                                <div class="product-info">
-                                    <h3 class="product-name">Malai Thaen</h3>
-                                    <p class="product-price">Rs. 670/-</p>
-                                    <button class="product-btn" data-testid="button-add-cart-2">Add to cart</button>
+                                <div class="product-info-enhanced">
+                                    <h3 class="product-name-enhanced">Malai Thaen</h3>
+                                    <p class="product-price-enhanced">Rs. 670/-</p>
+                                    <button class="add-to-cart-btn">Add to cart</button>
                                 </div>
                             </div>
                         </div>
-                        <button class="nav-arrow" data-testid="button-nav-right">
+                        
+                        <button class="nav-arrow nav-right">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
@@ -417,6 +361,56 @@
             </div>
         </section>
 
+        <!-- Enhanced Customer Testimonials Section -->
+        <section class="enhanced-customer-testimonials">
+            <div class="container">
+                <div class="testimonials-layout">
+                    <!-- Left side content -->
+                    <div class="testimonials-left">
+                        <h2 class="testimonials-main-title">What Our<br>Customer Say's</h2>
+                        <p class="testimonials-description">
+                            Here's what our happy customers have to say about their experience with Narpavai Honey. We take pride in delivering pure, high-quality honey that's loved and trusted by families across the country. Your feedback inspires us to keep it natural, honest, and sweet—just like our honey!
+                        </p>
+                    </div>
+                    
+                    <!-- Right side testimonials -->
+                    <div class="testimonials-right">
+                        <div class="testimonial-card-new">
+                            <div class="customer-avatar">
+                                <img src="client/public/figmaAssets/frame-39.svg" alt="Francis George">
+                            </div>
+                            <p class="customer-review">
+                                our valued customers share their honest experiences with Narpavai Honey—from taste to trust, and everything in between.
+                            </p>
+                            <div class="star-rating">
+                                <img src="client/public/figmaAssets/frame-531686.svg" alt="Five star rating">
+                            </div>
+                            <div class="customer-details">
+                                <h4>Francis George</h4>
+                                <p>Customer</p>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card-new">
+                            <div class="customer-avatar">
+                                <img src="client/public/figmaAssets/frame-39-1.svg" alt="Jasmine Albert">
+                            </div>
+                            <p class="customer-review">
+                                Discover what our valued customers are saying about their experience with Narpavai Honey—pure, flavorful, and trusted by families nationwide.
+                            </p>
+                            <div class="star-rating">
+                                <img src="client/public/figmaAssets/frame-531686.svg" alt="Five star rating">
+                            </div>
+                            <div class="customer-details">
+                                <h4>JASMINE ALBERT</h4>
+                                <p>Customer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Testimonials Section -->
         <section class="testimonials">
             <div class="container">
@@ -539,81 +533,6 @@
             </div>
         </section>
 
-        <!-- Narpavai Promise Section -->
-        <section class="narpavai-promise">
-            <div class="container">
-                <h2 class="section-title">The Narpavai Promise</h2>
-                <div class="promise-grid">
-                    <div class="promise-card" data-testid="card-promise-1">
-                        <div class="promise-image">
-                            <img src="client/public/figmaAssets/untitled-design--52--1.png" alt="100% Raw & Unprocessed">
-                        </div>
-                        <div class="promise-content">
-                            <h3>100% Raw & Unprocessed</h3>
-                            <p>Pure honey straight from the hive</p>
-                        </div>
-                    </div>
-                    <div class="promise-card" data-testid="card-promise-2">
-                        <div class="promise-image">
-                            <img src="client/public/figmaAssets/untitled-design--53--1.png" alt="Ethically Sourced from Trusted Beekeepers">
-                        </div>
-                        <div class="promise-content">
-                            <h3>Ethically Sourced from Trusted Beekeepers</h3>
-                            <p>Supporting local beekeepers with fair practices</p>
-                        </div>
-                    </div>
-                    <div class="promise-card" data-testid="card-promise-3">
-                        <div class="promise-image">
-                            <img src="client/public/figmaAssets/untitled-design--57--1.png" alt="Lab-Tested for Purity">
-                        </div>
-                        <div class="promise-content">
-                            <h3>Lab-Tested for Purity</h3>
-                            <p>Quality assured through rigorous testing</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Customer Testimonials Section -->
-        <section class="customer-testimonials">
-            <div class="container">
-                <div class="testimonials-content">
-                    <div class="testimonials-header">
-                        <h2 class="section-title">What Our<br>Customer Say's</h2>
-                    </div>
-                    <div class="testimonials-cards">
-                        <div class="customer-card" data-testid="card-customer-1">
-                            <div class="customer-image">
-                                <img src="client/public/figmaAssets/frame-39.svg" alt="Francis George">
-                            </div>
-                            <p class="customer-text">our valued customers share their honest experiences with Narpavai Honey—from taste to trust, and everything in between.</p>
-                            <div class="customer-rating">
-                                <img src="client/public/figmaAssets/frame-531686.svg" alt="Five star rating">
-                            </div>
-                            <div class="customer-info">
-                                <h4>Francis George</h4>
-                                <p>Customer</p>
-                            </div>
-                        </div>
-                        <div class="customer-card" data-testid="card-customer-2">
-                            <div class="customer-image">
-                                <img src="client/public/figmaAssets/frame-39-1.svg" alt="JASMINE ALBERT">
-                            </div>
-                            <p class="customer-text">Discover what our valued customers are saying about their experience with Narpavai Honey—pure, flavorful, and trusted by families nationwide.</p>
-                            <div class="customer-rating">
-                                <img src="client/public/figmaAssets/frame-531686.svg" alt="Five star rating">
-                            </div>
-                            <div class="customer-info">
-                                <h4>JASMINE ALBERT</h4>
-                                <p>Customer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Newsletter Section -->
         <section class="newsletter">
             <div class="newsletter-bg">
@@ -707,5 +626,15 @@
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+    
+    <script>
+        // Load navbar
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+    </script>
 </body>
 </html>
