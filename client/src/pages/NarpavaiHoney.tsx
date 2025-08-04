@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Navbar } from "../components/Navbar";
 import { HeroBanner } from "../components/HeroBanner";
@@ -13,6 +12,11 @@ import { FeaturedProductsSection } from "./sections/FeaturedProductsSection";
 import { AboutUsSection } from "./sections/AboutUsSection";
 import { WhyChooseUsSection } from "./sections/WhyChooseUsSection";
 import { VideoTourSection } from "./sections/VideoTourSection";
+import { NarpavaiPromiseSection } from "./sections/NarpavaiPromiseSection";
+import { GallerySection } from "./sections/GallerySection";
+import { FAQSection } from "./sections/FAQSection";
+import { CallToActionSection } from "./sections/CallToActionSection";
+import { NewsletterSubscriptionSection } from "./sections/NewsletterSubscriptionSection";
 
 export const NarpavaiHoney = (): JSX.Element => {
   return (
@@ -37,6 +41,8 @@ export const NarpavaiHoney = (): JSX.Element => {
             <TestimonialsSection />
             <VideoTourSection />
             <FAQSection />
+             <GallerySection />
+            <NarpavaiPromiseSection />
             <CallToActionSection />
             <NewsletterSubscriptionSection />
           </div>
