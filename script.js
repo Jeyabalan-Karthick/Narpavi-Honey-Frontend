@@ -414,11 +414,76 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 }
 
+// Product navigation functionality
+let currentProductIndex = 0;
+const products = [
+    {
+        name: "Murungai Honey",
+        price: "Rs. 300/-",
+        image: "client/public/figmaAssets/untitled-design--58--3.png"
+    },
+    {
+        name: "Malai Thaen",
+        price: "Rs. 670/-",
+        image: "client/public/figmaAssets/untitled-design--59--1.png"
+    },
+    {
+        name: "Pure Honey",
+        price: "Rs. 450/-",
+        image: "client/public/figmaAssets/untitled-design--58--3-1.png"
+    },
+    {
+        name: "Multi Flower Honey",
+        price: "Rs. 550/-",
+        image: "client/public/figmaAssets/untitled-design--58--3-2.png"
+    }
+];
+
+function navigateProducts(direction) {
+    const productCards = document.querySelectorAll('.product-card-enhanced');
+    const totalProducts = products.length;
+    
+    if (direction === 'next') {
+        currentProductIndex = (currentProductIndex + 1) % totalProducts;
+    } else if (direction === 'prev') {
+        currentProductIndex = (currentProductIndex - 1 + totalProducts) % totalProducts;
+    }
+    
+    // Update the first product card
+    if (productCards[0]) {
+        const product = products[currentProductIndex];
+        const nextProduct = products[(currentProductIndex + 1) % totalProducts];
+        
+        // Update first card
+        const firstCard = productCards[0];
+        const firstImage = firstCard.querySelector('.product-image-enhanced');
+        const firstName = firstCard.querySelector('.product-name-enhanced');
+        const firstPrice = firstCard.querySelector('.product-price-enhanced');
+        
+        if (firstImage) firstImage.src = product.image;
+        if (firstName) firstName.textContent = product.name;
+        if (firstPrice) firstPrice.textContent = product.price;
+        
+        // Update second card
+        if (productCards[1]) {
+            const secondCard = productCards[1];
+            const secondImage = secondCard.querySelector('.product-image-enhanced');
+            const secondName = secondCard.querySelector('.product-name-enhanced');
+            const secondPrice = secondCard.querySelector('.product-price-enhanced');
+            
+            if (secondImage) secondImage.src = nextProduct.image;
+            if (secondName) secondName.textContent = nextProduct.name;
+            if (secondPrice) secondPrice.textContent = nextProduct.price;
+        }
+    }
+}
+
 // Export functions for potential external use
 window.NarpavaiHoney = {
     toggleMobileMenu,
     closeMobileMenu,
     toggleFAQ,
     setCenterVideo,
-    validateEmail
+    validateEmail,
+    navigateProducts
 };

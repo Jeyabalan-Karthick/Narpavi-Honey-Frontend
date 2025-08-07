@@ -2,7 +2,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
         /* Navbar specific styles */
         .navbar {
             position: fixed;
@@ -11,23 +23,58 @@
             right: 0;
             z-index: 1000;
             background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-top: 1px solid #333;
+            border-left: 1px solid #333;
+            border-right: 1px solid #333;
             padding: 0.75rem 0;
         }
 
         .navbar-container {
             max-width: 1440px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .logo-img {
+        .navbar-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container {
+            position: relative;
             width: 3.5rem;
             height: 3.5rem;
-            object-fit: cover;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #FFE4B5 0%, #FF8C42 50%, #8B008B 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .logo-text {
+            color: #4A1C1C;
+            font-weight: 600;
+            font-size: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .logo-subtitle {
+            color: #4A1C1C;
+            font-size: 0.75rem;
+            font-style: italic;
+            font-family: 'Poppins', sans-serif;
+            margin-top: -0.25rem;
         }
 
         .navbar-nav {
@@ -38,16 +85,18 @@
             .navbar-nav {
                 display: flex;
                 align-items: center;
-                gap: 2rem;
+                gap: 2.5rem;
+                margin-left: 2rem;
             }
         }
 
         .nav-link {
-            color: #843503;
+            color: #8B4513;
             font-weight: 500;
             text-decoration: none;
             transition: color 0.3s ease;
             font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
         }
 
         .nav-link:hover {
@@ -57,7 +106,7 @@
         .navbar-actions {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .search-container {
@@ -65,26 +114,28 @@
         }
 
         .search-input {
-            width: 12rem;
-            background-color: #f5dc6f;
+            width: 14rem;
+            background-color: #F5DC6F;
             border: none;
             border-radius: 20px;
             padding: 0.5rem 2.5rem 0.5rem 1rem;
-            color: #843503;
+            color: #333;
             font-size: 0.875rem;
             font-family: 'Poppins', sans-serif;
+            outline: none;
         }
 
         .search-input::placeholder {
-            color: #843503;
+            color: #666;
         }
 
         .search-icon {
             position: absolute;
-            right: 0.75rem;
+            left: 0.75rem;
             top: 50%;
             transform: translateY(-50%);
-            color: #843503;
+            color: #666;
+            font-size: 0.875rem;
         }
 
         .nav-icon-container {
@@ -92,19 +143,31 @@
             align-items: center;
             gap: 0.25rem;
             cursor: pointer;
+            position: relative;
         }
 
         .nav-icon {
             width: 1.5rem;
             height: 1.5rem;
-            color: #843503;
+            color: #8B4513;
+            font-size: 1.25rem;
         }
 
         .nav-icon-count {
-            color: #843503;
-            font-weight: 500;
-            font-size: 0.875rem;
+            position: absolute;
+            top: -0.5rem;
+            right: -0.5rem;
+            background-color: #FF6B6B;
+            color: white;
+            font-weight: 600;
+            font-size: 0.75rem;
             font-family: 'Poppins', sans-serif;
+            border-radius: 50%;
+            width: 1.25rem;
+            height: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .mobile-menu-btn {
@@ -113,6 +176,7 @@
             background: none;
             border: none;
             cursor: pointer;
+            color: #8B4513;
         }
 
         @media (min-width: 1024px) {
@@ -135,7 +199,7 @@
         }
 
         .mobile-nav-link {
-            color: #843503;
+            color: #8B4513;
             font-weight: 500;
             font-size: 0.875rem;
             text-decoration: none;
@@ -147,6 +211,21 @@
         .mobile-nav-link:hover {
             color: #6a3d18;
         }
+
+        /* Responsive adjustments */
+        @media (max-width: 1023px) {
+            .navbar-nav {
+                display: none;
+            }
+            
+            .search-container {
+                display: none;
+            }
+            
+            .navbar-actions {
+                gap: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -155,7 +234,12 @@
             <div class="navbar-content">
                 <!-- Logo -->
                 <div class="navbar-logo">
-                    <img src="client/public/figmaAssets/add-a-little-bit-of-body-text--9--1-1.png" alt="Narpavai Logo" class="logo-img">
+                    <div class="logo-container">
+                        <div style="text-align: center;">
+                            <div class="logo-text">N</div>
+                            <div class="logo-subtitle">Natural Things</div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Desktop Navigation -->
@@ -171,8 +255,8 @@
                 <div class="navbar-actions">
                     <!-- Search Bar -->
                     <div class="search-container">
-                        <input type="text" placeholder="Search" class="search-input">
                         <i class="fas fa-search search-icon"></i>
+                        <input type="text" placeholder="Search" class="search-input">
                     </div>
 
                     <!-- Cart Icon -->
@@ -183,12 +267,14 @@
 
                     <!-- Heart Icon -->
                     <div class="nav-icon-container">
-                        <i class="fas fa-heart nav-icon"></i>
+                        <i class="far fa-heart nav-icon"></i>
                         <span class="nav-icon-count">1</span>
                     </div>
 
                     <!-- User Icon -->
-                    <i class="fas fa-user nav-icon"></i>
+                    <div class="nav-icon-container">
+                        <i class="fas fa-user nav-icon"></i>
+                    </div>
 
                     <!-- Mobile Menu Button -->
                     <button class="mobile-menu-btn" onclick="toggleMobileMenu()">

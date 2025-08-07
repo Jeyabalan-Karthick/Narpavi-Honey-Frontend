@@ -34,7 +34,7 @@
         <!-- Hero Banner Section -->
         <section class="hero-banner" id="home">
             <div class="hero-bg-image">
-                <img src="client/public/figmaAssets/untitled-design--52--1.png" alt="Honey jars and bee" class="hero-bg-img">
+                <img src="client/public/figmaAssets/untitled-design--57--1.png" alt="Honey jars and bee" class="hero-bg-img">
             </div>
             <div class="container hero-container">
                 <div class="hero-content">
@@ -50,6 +50,34 @@
                 </div>
             </div>
         </section>
+
+               <!-- Testimonials Section -->
+               <section class="testimonials">
+                <div class="container">
+                    <h2 class="section-title">The Narpavai Promise</h2>
+                    <div class="testimonial-cards">
+                        <div class="testimonial-card" data-testid="card-testimonial-1">
+                            <div class="testimonial-content" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 100%), url('client/public/figmaAssets/frame-1321314512.png')">
+                                <h3>100% Raw & Unprocessed</h3>
+                            </div>
+                        </div>
+                        <div class="testimonial-card middle" data-testid="card-testimonial-2">
+                            <div class="testimonial-content">
+                                <img src="client/public/figmaAssets/rectangle-3463898.svg" alt="Rectangle" class="testimonial-bg">
+                                <h3>Ethically Sourced from Trusted Beekeepers</h3>
+                                <img src="client/public/figmaAssets/add-a-little-bit-of-body-text--3--1.png" alt="Honey illustration" class="testimonial-decoration">
+                            </div>
+                        </div>
+                        <div class="testimonial-card" data-testid="card-testimonial-3">
+                            <div class="testimonial-content" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.3) 100%), url('client/public/figmaAssets/frame-1321314514.png')">
+                                <h3>Lab-Tested for Purity</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bee-decoration">
+                    </div>
+                </div>
+            </section>
 
         <!-- Product Categories Section -->
         <section class="product-categories" id="products">
@@ -87,10 +115,13 @@
         <!-- Enhanced Product List Section -->
         <section class="enhanced-product-list">
             <div class="container">
-                <h2 class="section-title">Product List</h2>
+                <h2 class="section-title">Product Listing Section</h2>
                 <div class="product-showcase">
                     <!-- Deal Card -->
                     <div class="deal-card">
+                        <div class="deal-bg-image">
+                            <img src="client/public/figmaAssets/frame-1321314512.png" alt="Sunflower field with beekeeper">
+                        </div>
                         <div class="deal-content">
                             <h3 class="deal-title">Deal end soon</h3>
                             <p class="deal-description">
@@ -102,23 +133,23 @@
 
                     <!-- Product Navigation -->
                     <div class="product-navigation">
-                        <button class="nav-arrow nav-left">
+                        <button class="nav-arrow nav-left" onclick="navigateProducts('prev')">
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         
                         <div class="product-cards-container">
-                            <div class="product-card-enhanced">
+                            <div class="product-card-enhanced" data-product-index="0">
                                 <div class="product-image-wrapper">
                                     <img src="client/public/figmaAssets/untitled-design--58--3.png" alt="Murungai Honey" class="product-image-enhanced">
                                 </div>
                                 <div class="product-info-enhanced">
                                     <h3 class="product-name-enhanced">Murungai Honey</h3>
                                     <p class="product-price-enhanced">Rs. 300/-</p>
-                                    <button class="add-to-cart-btn">Add to cart</button>
+                                    <button class="add-to-cart-btn">Add to cart </button>
                                 </div>
                             </div>
                             
-                            <div class="product-card-enhanced">
+                            <div class="product-card-enhanced" data-product-index="1">
                                 <div class="product-image-wrapper">
                                     <img src="client/public/figmaAssets/untitled-design--59--1.png" alt="Malai Thaen" class="product-image-enhanced">
                                 </div>
@@ -130,7 +161,7 @@
                             </div>
                         </div>
                         
-                        <button class="nav-arrow nav-right">
+                        <button class="nav-arrow nav-right" onclick="navigateProducts('next')">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
@@ -138,6 +169,88 @@
             </div>
         </section>
 
+
+    
+
+
+ 
+
+        <!-- Video Tour Section -->
+        <section class="video-tour">
+            <div class="video-tour-bg">
+                <div class="video-tour-pattern"></div>
+            </div>
+            <div class="container">
+                <h2 class="section-title">Take a video tour to know our honey form</h2>
+                <div class="video-container">
+                    <!-- Desktop Layout -->
+                    <div class="video-layout-desktop">
+                        <div class="video-item side" data-testid="video-side-1" onclick="setCenterVideo(2)">
+                            <img src="client/public/figmaAssets/untitled-design--59--1.png" alt="Honey Extraction">
+                            <div class="video-overlay">
+                                <button class="play-btn"><i class="fas fa-play"></i></button>
+                            </div>
+                        </div>
+                        <div class="video-item center" data-testid="video-center">
+                            <img src="client/public/figmaAssets/group-1000005074.png" alt="Main Honey Farm Tour" id="center-video-img">
+                            <div class="video-overlay">
+                                <button class="play-btn large"><i class="fas fa-play"></i></button>
+                            </div>
+                        </div>
+                        <div class="video-item side" data-testid="video-side-2" onclick="setCenterVideo(1)">
+                            <img src="client/public/figmaAssets/untitled-design--58--3.png" alt="Beekeeping Process">
+                            <div class="video-overlay">
+                                <button class="play-btn"><i class="fas fa-play"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile Layout -->
+                    <div class="video-layout-mobile">
+                        <div class="video-item mobile" data-testid="video-mobile-1">
+                            <img src="client/public/figmaAssets/group-1000005074.png" alt="Main Honey Farm Tour">
+                            <div class="video-overlay">
+                                <button class="play-btn"><i class="fas fa-play"></i></button>
+                            </div>
+                            <h3>Main Honey Farm Tour</h3>
+                        </div>
+                        <div class="video-item mobile" data-testid="video-mobile-2">
+                            <img src="client/public/figmaAssets/untitled-design--58--3.png" alt="Beekeeping Process">
+                            <div class="video-overlay">
+                                <button class="play-btn"><i class="fas fa-play"></i></button>
+                            </div>
+                            <h3>Beekeeping Process</h3>
+                        </div>
+                        <div class="video-item mobile" data-testid="video-mobile-3">
+                            <img src="client/public/figmaAssets/untitled-design--59--1.png" alt="Honey Extraction">
+                            <div class="video-overlay">
+                                <button class="play-btn"><i class="fas fa-play"></i></button>
+                            </div>
+                            <h3>Honey Extraction</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <div class="newsletter-bg">
+                <img src="client/public/figmaAssets/Screenshot 2025-08-07 095609.png" alt="Background pattern" class="newsletter-pattern">
+            </div>
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2 class="section-title">Get Offer</h2>
+                    <div class="offer-card">
+                        <p class="offer-text-large">Save upto 20% on</p>
+                        <p class="offer-text-small">Fresh Honey</p>
+                        <button class="offer-btn" data-testid="button-offer-cart">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
         <!-- Main Product List Section -->
         <section class="main-product-list">
             <div class="container">
@@ -252,7 +365,58 @@
             </div>
         </section>
 
-        <!-- Why Choose Us Section -->
+                <!-- Enhanced Customer Testimonials Section -->
+                <section class="enhanced-customer-testimonials">
+                    <div class="container">
+                        <div class="testimonials-layout">
+                            <!-- Left side content -->
+                            <div class="testimonials-left">
+                                <h2 class="testimonials-main-title">What Our<br>Customer Say's</h2>
+                                <p class="testimonials-description">
+                                    Here's what our happy customers have to say about their experience with Narpavai Honey. We take pride in delivering pure, high-quality honey that's loved and trusted by families across the country. Your feedback inspires us to keep it natural, honest, and sweet—just like our honey!
+                                </p>
+                            </div>
+                            
+                            <!-- Right side testimonials -->
+                            <div class="testimonials-right">
+                                <div class="testimonial-card-new">
+                                    <div class="customer-avatar">
+                                        <img src="client/public/figmaAssets/frame-39.svg" alt="Francis George">
+                                    </div>
+                                    <p class="customer-review">
+                                        our valued customers share their honest experiences with Narpavai Honey—from taste to trust, and everything in between.
+                                    </p>
+                                    <div class="star-rating">
+                                        <img src="client/public/figmaAssets/frame-531686.svg" alt="Five star rating">
+                                    </div>
+                                    <div class="customer-details">
+                                        <h4>Francis George</h4>
+                                        <p>Customer</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="testimonial-card-new">
+                                    <div class="customer-avatar">
+                                        <img src="client/public/figmaAssets/frame-39-1.svg" alt="Jasmine Albert">
+                                    </div>
+                                    <p class="customer-review">
+                                        Discover what our valued customers are saying about their experience with Narpavai Honey—pure, flavorful, and trusted by families nationwide.
+                                    </p>
+                                    <div class="star-rating">
+                                        <img src="client/public/figmaAssets/frame-531686.svg" alt="Five star rating">
+                                    </div>
+                                    <div class="customer-details">
+                                        <h4>JASMINE ALBERT</h4>
+                                        <p>Customer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+        
+
+                    <!-- Why Choose Us Section -->
         <section class="why-choose-us">
             <div class="container">
                 <h2 class="section-title">Why choose Us ?</h2>
@@ -357,197 +521,6 @@
                 </div>
                 <div class="bee-decoration">
                     <img src="client/public/figmaAssets/bee-3.png" alt="Bee">
-                </div>
-            </div>
-        </section>
-
-        <!-- Enhanced Customer Testimonials Section -->
-        <section class="enhanced-customer-testimonials">
-            <div class="container">
-                <div class="testimonials-layout">
-                    <!-- Left side content -->
-                    <div class="testimonials-left">
-                        <h2 class="testimonials-main-title">What Our<br>Customer Say's</h2>
-                        <p class="testimonials-description">
-                            Here's what our happy customers have to say about their experience with Narpavai Honey. We take pride in delivering pure, high-quality honey that's loved and trusted by families across the country. Your feedback inspires us to keep it natural, honest, and sweet—just like our honey!
-                        </p>
-                    </div>
-                    
-                    <!-- Right side testimonials -->
-                    <div class="testimonials-right">
-                        <div class="testimonial-card-new">
-                            <div class="customer-avatar">
-                                <img src="client/public/figmaAssets/frame-39.svg" alt="Francis George">
-                            </div>
-                            <p class="customer-review">
-                                our valued customers share their honest experiences with Narpavai Honey—from taste to trust, and everything in between.
-                            </p>
-                            <div class="star-rating">
-                                <img src="client/public/figmaAssets/frame-531686.svg" alt="Five star rating">
-                            </div>
-                            <div class="customer-details">
-                                <h4>Francis George</h4>
-                                <p>Customer</p>
-                            </div>
-                        </div>
-                        
-                        <div class="testimonial-card-new">
-                            <div class="customer-avatar">
-                                <img src="client/public/figmaAssets/frame-39-1.svg" alt="Jasmine Albert">
-                            </div>
-                            <p class="customer-review">
-                                Discover what our valued customers are saying about their experience with Narpavai Honey—pure, flavorful, and trusted by families nationwide.
-                            </p>
-                            <div class="star-rating">
-                                <img src="client/public/figmaAssets/frame-531686.svg" alt="Five star rating">
-                            </div>
-                            <div class="customer-details">
-                                <h4>JASMINE ALBERT</h4>
-                                <p>Customer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="testimonials">
-            <div class="container">
-                <h2 class="section-title">The Narpavai Promise</h2>
-                <div class="testimonial-cards">
-                    <div class="testimonial-card" data-testid="card-testimonial-1">
-                        <div class="testimonial-content" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 100%), url('client/public/figmaAssets/frame-1321314512.png')">
-                            <h3>100% Raw & Unprocessed</h3>
-                        </div>
-                    </div>
-                    <div class="testimonial-card middle" data-testid="card-testimonial-2">
-                        <div class="testimonial-content">
-                            <img src="client/public/figmaAssets/rectangle-3463898.svg" alt="Rectangle" class="testimonial-bg">
-                            <h3>Ethically Sourced from Trusted Beekeepers</h3>
-                            <img src="client/public/figmaAssets/add-a-little-bit-of-body-text--3--1.png" alt="Honey illustration" class="testimonial-decoration">
-                        </div>
-                    </div>
-                    <div class="testimonial-card" data-testid="card-testimonial-3">
-                        <div class="testimonial-content" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.3) 100%), url('client/public/figmaAssets/frame-1321314514.png')">
-                            <h3>Lab-Tested for Purity</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="bee-decoration">
-                    <img src="client/public/figmaAssets/bee-3.png" alt="Bee">
-                </div>
-            </div>
-        </section>
-
-        <!-- Video Tour Section -->
-        <section class="video-tour">
-            <div class="container">
-                <h2 class="section-title">Take a video tour to know our honey form</h2>
-                <div class="video-container">
-                    <!-- Desktop Layout -->
-                    <div class="video-layout-desktop">
-                        <div class="video-item side" data-testid="video-side-1" onclick="setCenterVideo(2)">
-                            <img src="client/public/figmaAssets/untitled-design--59--1.png" alt="Honey Extraction">
-                            <div class="video-overlay">
-                                <button class="play-btn"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                        <div class="video-item center" data-testid="video-center">
-                            <img src="client/public/figmaAssets/group-1000005074.png" alt="Main Honey Farm Tour" id="center-video-img">
-                            <div class="video-overlay">
-                                <button class="play-btn large"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                        <div class="video-item side" data-testid="video-side-2" onclick="setCenterVideo(1)">
-                            <img src="client/public/figmaAssets/untitled-design--58--3.png" alt="Beekeeping Process">
-                            <div class="video-overlay">
-                                <button class="play-btn"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Mobile Layout -->
-                    <div class="video-layout-mobile">
-                        <div class="video-item mobile" data-testid="video-mobile-1">
-                            <img src="client/public/figmaAssets/group-1000005074.png" alt="Main Honey Farm Tour">
-                            <div class="video-overlay">
-                                <button class="play-btn"><i class="fas fa-play"></i></button>
-                            </div>
-                            <h3>Main Honey Farm Tour</h3>
-                        </div>
-                        <div class="video-item mobile" data-testid="video-mobile-2">
-                            <img src="client/public/figmaAssets/untitled-design--58--3.png" alt="Beekeeping Process">
-                            <div class="video-overlay">
-                                <button class="play-btn"><i class="fas fa-play"></i></button>
-                            </div>
-                            <h3>Beekeeping Process</h3>
-                        </div>
-                        <div class="video-item mobile" data-testid="video-mobile-3">
-                            <img src="client/public/figmaAssets/untitled-design--59--1.png" alt="Honey Extraction">
-                            <div class="video-overlay">
-                                <button class="play-btn"><i class="fas fa-play"></i></button>
-                            </div>
-                            <h3>Honey Extraction</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section class="gallery">
-            <div class="container">
-                <h2 class="section-title">Our Journey & Achievements</h2>
-                <div class="gallery-scroll" id="gallery-scroll">
-                    <div class="gallery-item">
-                        <img src="client/public/figmaAssets/untitled-design--58--3-1.png" alt="Gallery image 1">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="client/public/figmaAssets/untitled-design--58--3-2.png" alt="Gallery image 2">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="client/public/figmaAssets/untitled-design--58--3-3.png" alt="Gallery image 3">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="client/public/figmaAssets/untitled-design--58--3-4.png" alt="Gallery image 4">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="client/public/figmaAssets/untitled-design--58--3-5.png" alt="Gallery image 5">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="client/public/figmaAssets/group-1000005062-1.png" alt="Gallery image 6">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="client/public/figmaAssets/group-1000005062-2.png" alt="Gallery image 7">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="client/public/figmaAssets/group-1000005062-3.png" alt="Gallery image 8">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="client/public/figmaAssets/group-1000005062-4.png" alt="Gallery image 9">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="client/public/figmaAssets/group-1000005062-5.png" alt="Gallery image 10">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Newsletter Section -->
-        <section class="newsletter">
-            <div class="newsletter-bg">
-                <img src="client/public/figmaAssets/add-a-little-bit-of-body-text--10--2.png" alt="Honey decoration" class="newsletter-decoration left">
-                <img src="client/public/figmaAssets/add-a-little-bit-of-body-text--10--2.png" alt="Honey decoration" class="newsletter-decoration right">
-                <img src="client/public/figmaAssets/untitled-design--12--1-3.svg" alt="Background pattern" class="newsletter-pattern">
-            </div>
-            <div class="container">
-                <div class="newsletter-content">
-                    <h2 class="section-title">Get Offer</h2>
-                    <div class="offer-card">
-                        <p class="offer-text-large">Save upto 20% on</p>
-                        <p class="offer-text-small">Fresh Honey</p>
-                        <button class="offer-btn" data-testid="button-offer-cart">Add to cart</button>
-                    </div>
                 </div>
             </div>
         </section>
